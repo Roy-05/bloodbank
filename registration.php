@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Registration</title>
-<link rel="stylesheet" href="css/style.css" />
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
 </head>
 <body>
 <?php
@@ -18,9 +18,9 @@ if (isset($_REQUEST['username'])){
  $email = mysqli_real_escape_string($con,$email);
  $password = stripslashes($_REQUEST['password']);
  $password = mysqli_real_escape_string($con,$password);
- $trn_date = date("Y-m-d H:i:s");
-        $query = "INSERT into `users` (username, password, email, trn_date)
-VALUES ('$username', '".md5($password)."', '$email', '$trn_date')";
+
+        $query = "INSERT into `Logins` (user_name, password, email, user_type)
+VALUES ('$username', '".md5($password)."', '$email', 'R')";
         $result = mysqli_query($con,$query);
         if($result){
             echo "<div class='form'>
