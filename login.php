@@ -40,7 +40,7 @@ and password='".md5($password)."'";
 <input type="password" name="password" placeholder="Password" required />
 <input name="submit" type="submit" value="Login" />
 </form>
-<p>Not registered yet? <a href='registration.php'>Register Here</a></p>
+<p>Not registered yet? <a href='userTypeRegister.php'>Register Here</a></p>
 </div>
 <?php } ?>
 </body>
