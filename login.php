@@ -18,13 +18,15 @@ if (isset($_POST['email'])){
  $password = stripslashes($_REQUEST['password']);
  $password = mysqli_real_escape_string($con,$password);
  //Checking is user existing in the database or not
-        $query = "SELECT user_type FROM `Logins` WHERE email='$email'
+        $query = "SELECT user_type, user_id FROM `Logins` WHERE email='$email'
 and password='".md5($password)."'";
  $result = mysqli_query($con,$query) or die(mysqli_error($con));
  $rows = mysqli_num_rows($result);
         if($rows==1){
-     $_SESSION['email'] = $email;
+     $_SESSION["email"] = $email;
+              
               $row_data = mysqli_fetch_assoc($result);
+              $_SESSION['user_id'] = $row_data["user_id"];
               if($row_data["user_type"] == "H" ){
                      header("Location: hospitalDashboard.php");
               }
@@ -44,6 +46,7 @@ and password='".md5($password)."'";
 <input type="email" name="email" placeholder="Email" required />
 <input type="password" name="password" placeholder="Password" required />
 <input name="submit" type="submit" value="Login" />
+
 </form>
 <p>Not registered yet? <a href='userTypeRegister.php'>Register Here</a></p>
 </div>
