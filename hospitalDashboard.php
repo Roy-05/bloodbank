@@ -11,8 +11,12 @@
     if(isset($_REQUEST['blood_type'])) {
         $blood_type = $_REQUEST['blood_type'];
         $user_id = $_SESSION['user_id'];
-        $query = "INSERT INTO `AvailableBlood`(avb_blood_type, hos_id) 
-                    VALUES ('$blood_type', (SELECT hos_id from `Hospitals` WHERE user_id='$user_id'))";
+        $query = "INSERT INTO `AvailableBlood`(hos_id, avb_blood_type, added_on) 
+                    VALUES (
+                        (SELECT hos_id from `Hospitals` WHERE user_id='$user_id'),
+                        '$blood_type', 
+                        CURDATE()
+                    )";
         
         $result = mysqli_query($con, $query);
         if($result) {
