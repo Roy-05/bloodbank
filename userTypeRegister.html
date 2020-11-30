@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Select User Type</title>
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+</head>
+<body>
+    <div>
+        <h1>Are you a:</h1>
+        <div> 
+            <button id="hospital" name="hospital">Hospital</div>
+            <button id="receiver" name="receiver">Receiver</divs>
+            </div>
+    </div>
+    <script>
+        document.getElementById('hospital').addEventListener('click', ()=>{
+            location.href = "registerHospital.php";
+        });
+
+        document.getElementById('receiver').addEventListener('click', ()=>{
+            location.href = "registerReceiver.php"
+        })
+    </script>
+</body>
+</html>
