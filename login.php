@@ -10,22 +10,27 @@
 require('db.php');
 session_start();
 // If form submitted, insert values into the database.
-if (isset($_POST['username'])){
+if (isset($_POST['email'])){
         // removes backslashes
- $username = stripslashes($_REQUEST['username']);
+ $email = stripslashes($_REQUEST['email']);
         //escapes special characters in a string
- $username = mysqli_real_escape_string($con,$username);
+ $email = mysqli_real_escape_string($con,$email);
  $password = stripslashes($_REQUEST['password']);
  $password = mysqli_real_escape_string($con,$password);
  //Checking is user existing in the database or not
-        $query = "SELECT user_id FROM `Logins` WHERE user_name='$username'
+        $query = "SELECT user_type FROM `Logins` WHERE email='$email'
 and password='".md5($password)."'";
  $result = mysqli_query($con,$query) or die(mysqli_error($con));
  $rows = mysqli_num_rows($result);
         if($rows==1){
-     $_SESSION['username'] = $username;
-            // Redirect user to index.php
-     header("Location: index.php");
+     $_SESSION['email'] = $email;
+              $row_data = mysqli_fetch_assoc($result);
+              if($row_data["user_type"] == "H" ){
+                     header("Location: hospitalDashboard.php");
+              }
+              else {
+                     header("Location: welcome.php");   
+              }
          }else{
  echo "<div class='form'>
 <h3>Username/password is incorrect.</h3>
@@ -36,7 +41,7 @@ and password='".md5($password)."'";
 <div class="form">
 <h1>Log In</h1>
 <form action="" method="post" name="login">
-<input type="text" name="username" placeholder="Username" required />
+<input type="email" name="email" placeholder="Email" required />
 <input type="password" name="password" placeholder="Password" required />
 <input name="submit" type="submit" value="Login" />
 </form>
