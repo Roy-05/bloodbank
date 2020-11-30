@@ -1,56 +1,37 @@
+<!--
+    The following class creates prepared statements for 
+    various SQL Queries, so as to prevent Injection attacks.
+-->
 <?php
 
-namespace Phppot;
-
-
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '$t3isTemp');
+    define('DB_NAME', 'bloodbank');
 class DataSource
 {
 
-    const HOST = 'localhost';
-
-    const USERNAME = 'root';
-
-    const PASSWORD = 'test';
-
-    const DATABASENAME = 'db_rating';
-
     private $conn;
 
-    /**
-     * PHP implicitly takes care of cleanup for default connection types.
-     * So no need to worry about closing the connection.
-     *
-     * Singletons not required in PHP as there is no
-     * concept of shared memory.
-     * Every object lives only for a request.
-     *
-     * Keeping things simple and that works!
-     */
     function __construct()
     {
         $this->conn = $this->getConnection();
     }
 
-    /**
-     * If connection object is needed use this method and get access to it.
-     * Otherwise, use the below methods for insert / update / etc.
-     *
-     * @return \mysqli
-     */
+
     public function getConnection()
     {
-        $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
+        $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
         if (mysqli_connect_errno()) {
-            trigger_error("Problem with connecting to database.");
+            trigger_error("Cannot connect to the Database now.");
         }
 
-        $conn->set_charset("utf8");
         return $conn;
     }
 
     /**
-     * To get database results
+     * Execute a Select Query
      *
      * @param string $query
      * @param string $paramType
@@ -59,17 +40,17 @@ class DataSource
      */
     public function select($query, $paramType = "", $paramArray = array())
     {
-        $stmt = $this->conn->prepare($query);
+        $stmt = mysqli_prepare($this->conn, $query);
 
         if (! empty($paramType) && ! empty($paramArray)) {
 
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
-        $stmt->execute();
-        $result = $stmt->get_result();
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $resultset[] = $row;
             }
         }
@@ -80,7 +61,7 @@ class DataSource
     }
 
     /**
-     * To insert
+     * Execeute an Insert Query
      *
      * @param string $query
      * @param string $paramType
@@ -89,12 +70,10 @@ class DataSource
      */
     public function insert($query, $paramType, $paramArray)
     {
-        $stmt = $this->conn->prepare($query);
+        $stmt = mysqli_prepare( $this->conn, $query);
         $this->bindQueryParams($stmt, $paramType, $paramArray);
 
-        $stmt->execute();
-        $insertId = $stmt->insert_id;
-        return $insertId;
+        mysqli_stmt_execute($stmt);
     }
 
     /**
@@ -115,8 +94,7 @@ class DataSource
     }
 
     /**
-     * 1.
-     * Prepares parameter binding
+     * 1.Prepares parameter binding
      * 2. Bind prameters to the sql statement
      *
      * @param string $stmt
@@ -133,27 +111,5 @@ class DataSource
             $stmt,
             'bind_param'
         ), $paramValueReference);
-    }
-
-    /**
-     * To get database results
-     *
-     * @param string $query
-     * @param string $paramType
-     * @param array $paramArray
-     * @return array
-     */
-    public function getRecordCount($query, $paramType = "", $paramArray = array())
-    {
-        $stmt = $this->conn->prepare($query);
-        if (! empty($paramType) && ! empty($paramArray)) {
-
-            $this->bindQueryParams($stmt, $paramType, $paramArray);
-        }
-        $stmt->execute();
-        $stmt->store_result();
-        $recordCount = $stmt->num_rows;
-
-        return $recordCount;
     }
 }
