@@ -6,7 +6,7 @@ class User
 
     function __construct()
     {
-        require_once('./db_1.php');
+        require_once('./db.php');
         $this->ds = new DataSource();
     }
 
@@ -50,26 +50,57 @@ class User
                 "message" => "Username already exists."
             );
         } else {
+           
             if (! empty($_POST["password"])) {
 
-                $hashedPassword = password_hash($_POST["signup-password"], PASSWORD_DEFAULT);
+                $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
             }
-            $query = 'INSERT INTO tbl_member (email, password, user_type) VALUES (?, ?, ?)';
+            $query = 'INSERT INTO Logins (email, password, user_type) VALUES (?, ?, ?)';
             $paramType = 'sss';
             $paramValue = array(
                 $_POST["email"],
                 $hashedPassword,
                 $user_type
             );
-            $memberId = $this->ds->insert($query, $paramType, $paramValue);
-            if (! empty($memberId)) {
-                $response = array(
-                    "status" => "success",
-                    "message" => "You have registered successfully."
-                );
+            $insertId = $this->ds->insert($query, $paramType, $paramValue);
+            
+
+            if($user_type === 'H'){
+              $query =  "INSERT into Hospitals(name, user_id)
+                            VAlUES (?, (SELECT user_id from `Logins` WHERE email=?))";
+              $paramType = 'ss';
+              $paramValue = array(
+                $_POST["hos_name"],
+                $_POST["email"]
+            );
+
+            $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
+            }
+            else {
+                $query =  "INSERT into Receivers(first_name, last_name, rcvr_blood_type, user_id)
+                            VAlUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
+              $paramType = 'ssss';
+              $paramValue = array(
+                $_POST["first_name"],
+                $_POST["last_name"],
+                $_POST["blood_type"],
+                $_POST["email"],
+            );
+
+            $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
+            }
+            
+            if (!empty($insertId) && !empty($insertId1)) {
+                // $response = array(
+                //     "status" => "success",
+                //     "message" => "You have registered successfully."
+                // );
+
+                header("Location: login.php");
+                        
             }
         }
-        return $response;
+        //return $response;
     }
 
     public function getMember($email)
