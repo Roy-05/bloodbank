@@ -78,7 +78,7 @@ class User
             }
             else {
                 $query =  "INSERT into Receivers(first_name, last_name, rcvr_blood_type, user_id)
-                            VAlUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
+                            VALUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
               $paramType = 'ssss';
               $paramValue = array(
                 $_POST["first_name"],
