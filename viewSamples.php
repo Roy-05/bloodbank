@@ -1,4 +1,7 @@
 <?php 
+
+    include("./head.php");
+    include("./Components/navbar.php");
     require_once("./Model/AvailableSamples.php");
     $samples_obj = new AvailableSamples();
 

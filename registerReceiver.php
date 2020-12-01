@@ -9,11 +9,12 @@ if (!empty($_POST["register_btn"])) {
 <html>
 
 <head>
-       <meta charset="utf-8">
+       <?php include("./head.php") ?>
        <title>Sign Up - Receiver</title>
 </head>
 
 <body>
+       <?php include("./Components/navbar.php") ?>
        <div class="form">
               <h1>Registration</h1>
               <form name="registration" action="" method="post" autocomplete="off">

@@ -142,7 +142,7 @@ class User
             session_start();
             $_SESSION["user_id"] = $memberRecord[0]["user_id"];
             session_write_close();
-            $url = ($memberRecord[0]["user_type"] == "H") ?  "./hospitalDashboard.php" : "./welcome.php";
+            $url = ($memberRecord[0]["user_type"] == "H") ?  "./hospitalDashboard.php" : "./viewSamples.php";
             header("Location: $url");
         } else if ($loginPassword == 0) {
             $loginStatus = "Invalid username or password.";
