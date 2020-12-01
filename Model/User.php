@@ -47,7 +47,7 @@ class User
         if ($isUserExists) {
             $response = array(
                 "status" => "error",
-                "message" => "Username already exists."
+                "message" => "User already exists."
             );
         } else {
            

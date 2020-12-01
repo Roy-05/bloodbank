@@ -1,9 +1,9 @@
 <?php
-if (!empty($_POST["register_btn"])) {
-    require_once('./Model/User.php');
-    $member = new User();
-    $registrationResponse = $member->registerMember('H');
-}
+    if (!empty($_POST["register_btn"])) {
+        require_once('./Model/User.php');
+        $member = new User();
+        $registrationResponse = $member->registerMember('H');
+    }
 ?>
 <!DOCTYPE html>
 <html>
