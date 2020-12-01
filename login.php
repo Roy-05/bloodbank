@@ -10,7 +10,7 @@ if (isset($_REQUEST['email'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include("./head.php") ?>
+    <?php include("./Components/head.php") ?>
     <title>Login</title>
 </head>
 <?php include("./Components/navbar.php") ?>

@@ -9,7 +9,7 @@ if (!empty($_POST["register_btn"])) {
 <html>
 
 <head>
-       <?php include("./head.php") ?>
+       <?php include("./Components/head.php") ?>
        <title>Sign Up - Receiver</title>
 </head>
 
@@ -26,6 +26,7 @@ if (!empty($_POST["register_btn"])) {
                      <input type="submit" name="register_btn" value="Register" />
               </form>
        </div>
+       <p>Already registered? <a href='login.php.'>Login Here</a></p>
 </body>
 
 </html>

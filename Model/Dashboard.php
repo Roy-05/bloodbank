@@ -6,7 +6,7 @@ class Dashboard {
     private $hos_id;
     function __construct()
     {
-        require_once('./db.php');
+        require_once('./DataSource/db.php');
         $this->ds = new DataSource;
         $this->setHospitalId();
     }

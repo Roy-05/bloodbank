@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <?php include("./head.php") ?>
+    <?php include("./Components/head.php") ?>
     <title>Sign Up - Hospital</title>
 </head>
 
@@ -24,6 +24,7 @@
             <input type="submit" name="register_btn" value="Register" />
         </form>
     </div>
+    <p>Already registered? <a href='login.php.'>Login Here</a></p>
 </body>
 
 </html>

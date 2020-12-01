@@ -1,9 +1,9 @@
 <?php 
 
-    include("./head.php");
+    include("./Components/head.php");
     include("./Components/navbar.php");
-    require_once("./Model/AvailableSamples.php");
-    $samples_obj = new AvailableSamples();
+    require_once("./Model/BloodSamples.php");
+    $blood_samples = new BloodSamples();
 
     $html = "<table>
                 <tr>
@@ -11,15 +11,18 @@
                     <th>Available Blood</th>
                     <th>Added On</th>
                 </tr>";
-         $avb_samples = $samples_obj->getSamples();
+         $avb_samples = $blood_samples->getAvailableSamples();
          foreach ($avb_samples as $row){
-            $html .= "<tr><td>".$row['name']."</td>";
-            $html .= "<td>".$row['avb_blood_type']."</td>";
-            $html .= "<td>".$row['added_on']."</td></tr>";
+            $html .= "<tr>
+                        <td>$row[name]</td>
+                        <td>$row[avb_blood_type]</td>
+                        <td>$row[added_on]</td>
+                        <td>
+                            <button class=req_sample_btn id=$row[avb_id]>Request</button>
+                        </td>
+                      </tr>";
          }      
          $html .= "</table>";
 
          echo $html;
-
-
 ?>

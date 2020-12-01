@@ -1,7 +1,12 @@
+<!-- 
+    Authored By: Saket Roy
+    For: Bloodbank [Internshala]
+    Date: 30/11/20
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php include("./head.php") ?>
+    <?php include("./Components/head.php") ?>
     <title>Saket's Bloodbank</title>
 </head>
 <?php include("./Components/navbar.php") ?>
