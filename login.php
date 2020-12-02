@@ -1,4 +1,15 @@
 <?php
+
+session_start();
+
+// Deny access to this path if the user is logged in,
+// instead redirect them to the right starting point.
+if($_SESSION['logged_in']){
+    $url =  $_SESSION['user_type'] == "H" ?  "./hospitalDashboard.php" : "./viewSamples.php";
+    header("Location: $url");
+    exit(); 
+}
+
 if (isset($_REQUEST['email'])) {
     require_once('./Model/User.php');
     $member = new User();
