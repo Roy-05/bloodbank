@@ -19,6 +19,13 @@
 
         function requestBloodSample() {
             session_start();
+            $user_id =  $_SESSION['user_id'];
+
+            if(!$user_id){
+                header("Location: index.php");
+                exit();
+            }
+
             $query = "SELECT rcvr_id FROM Receivers WHERE user_id = ?";
             $paramType = 'i';
             $paramValue = array(
@@ -26,10 +33,10 @@
             );
 
             $result = $this->ds->select($query, $paramType, $paramValue);
-            if($result){
+           
                 $rcvr_id = $result[0]["rcvr_id"];
-                echo $rcvr_id;
-            }
+                var_dump($_SESSION['user_id']);
+            
         }
         
     }

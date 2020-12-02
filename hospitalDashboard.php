@@ -10,11 +10,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <?php include("./Components/head.php"); ?>
     <title>Dashboard</title>
 </head>
 
 <body>
+    <?php include("./Components/navbar.php"); ?>
     <form action="" method="post" name="add_blood_type">
         <input type="text" name="blood_type" placeholder="A+, O+, AB-, etc..." required />
         <input name="submit" type="submit" value="Submit" />

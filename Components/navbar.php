@@ -28,37 +28,43 @@
                   >View Samples</a
                 >
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link text-dark"
-                  href = "login.php"
-                  >Login</a
-                >
-              </li>
-              <li class="nav-item dropdown">
-              
-              <a 
-                    class="nav-link text-dark dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" 
-                    
-                  >Register</a>
-                <div class="dropdown-menu">
-                  <a 
-                    class="nav-link text-dark dropdown-item" 
-                    href="registerHospital.php"
-                  >As a Hospital</a>
-                  <a 
-                    class="nav-link text-dark dropdown-item" 
-                    href="registerReceiver.php"
-                  >As a Receiver</a>
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <a 
-                  class="nav-link text-dark" 
-                  href="logout.php"
-                >Logout</a>
-              </li>
+              <?php 
+                session_start();
+                if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
+                  echo '
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-dark"
+                        href = "login.php"
+                        >Login</a
+                      >
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a 
+                        class="nav-link text-dark dropdown-toggle" 
+                        href="#" 
+                        id="dropdownMenuLink" 
+                        data-toggle="dropdown" 
+                        >Register</a>
+                      <div class="dropdown-menu">
+                        <a 
+                          class="nav-link text-dark dropdown-item" 
+                          href="registerHospital.php"
+                        >As a Hospital</a>
+                        <a 
+                          class="nav-link text-dark dropdown-item" 
+                          href="registerReceiver.php"
+                        >As a Receiver</a>
+                      </div>
+                    </li>';
+                } else{
+                    echo '<li class="nav-item">
+                            <a class="nav-link text-dark" href="logout.php">
+                            Logout
+                            </a>
+                          </li>';
+                  } 
+                ?>
             </ul>
           </div>
         </nav>

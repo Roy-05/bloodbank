@@ -141,6 +141,7 @@ class User
             // the session
             session_start();
             $_SESSION["user_id"] = $memberRecord[0]["user_id"];
+            $_SESSION['logged_in'] = true;
             session_write_close();
             $url = ($memberRecord[0]["user_type"] == "H") ?  "./hospitalDashboard.php" : "./viewSamples.php";
             header("Location: $url");
