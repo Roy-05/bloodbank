@@ -28,22 +28,24 @@
                   >View Samples</a
                 >
               </li>
-             
-                    <li class="nav-item">
-                      <a
-                        class="nav-link text-dark"
-                        href = "login.php"
-                        >Login</a
-                      >
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a 
-                        class="nav-link text-dark dropdown-toggle" 
-                        href="#" 
-                        id="dropdownMenuLink" 
-                        data-toggle="dropdown" 
-                        >Register</a>
-                      <div class="dropdown-menu">
+              <?php 
+                session_start();
+                if(!$_SESSION['logged_in']){
+                    echo '<li class="nav-item">
+                            <a
+                              class="nav-link text-dark"
+                              href = "login.php"
+                              >Login</a
+                            >
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a 
+                              class="nav-link text-dark dropdown-toggle" 
+                              href="#" 
+                              id="dropdownMenuLink" 
+                              data-toggle="dropdown" 
+                              >Register</a>
+                      <div class="dropdown-menu dropdown-menu-right">
                         <a 
                           class="nav-link text-dark dropdown-item" 
                           href="registerHospital.php"
@@ -53,12 +55,15 @@
                           href="registerReceiver.php"
                         >As a Receiver</a>
                       </div>
-                    </li>
-               <li class="nav-item">
+                    </li>';}
+                else{
+               echo '<li class="nav-item">
                             <a class="nav-link text-dark" href="logout.php">
                             Logout
                             </a>
-                          </li>
+                          </li>';
+                }
+                ?>
                 
               
             </ul>
