@@ -1,4 +1,13 @@
 <?php 
+    session_start();
+
+    // Deny access to path for users who are not logged in, 
+    // or are not the right user type.
+    if(!$_SESSION['logged_in'] || $_SESSION['user_type'] !== "H"){
+        header("Location: index.php");
+        exit();
+    };
+
     require_once('./Model/Dashboard.php');
     $dashboard = new Dashboard();
     
