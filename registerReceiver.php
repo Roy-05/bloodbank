@@ -36,7 +36,7 @@ if (!empty($_POST["register_btn"])) {
                      <input type="submit" name="register_btn" value="Register" />
               </form>
        </div>
-       <p>Already registered? <a href='login.php.'>Login Here</a></p>
+       <p>Already registered? <a href='login.php'>Login Here</a></p>
 </body>
 
 </html>

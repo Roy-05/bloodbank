@@ -150,4 +150,40 @@ class User
             return $loginStatus;
         }
     }
+
+    /**
+     * Get the name of the currently logged in  user
+     */
+    public function getUserName()
+    {
+        session_start();
+        if($_SESSION['logged_in']){
+            $user_type = $_SESSION["user_type"];
+            if($user_type == "R"){
+                $query = "SELECT first_name, last_name FROM Receivers
+                            WHERE user_id = ?";
+                $paramType = "i";
+                $paramValue = array(
+                    $_SESSION["user_id"]
+                );
+
+                $result = $this->ds->select($query, $paramType, $paramValue);
+                $name = $result[0]['first_name'].' '.$result[0]['last_name'];  
+                
+                return $name;
+            }
+            else {
+                $query = "SELECT name FROM Hospitals WHERE user_id = ?";
+                $paramType = "i";
+                $paramValue = array(
+                    $_SESSION["user_id"]
+                );
+
+                $result = $this->ds->select($query, $paramType, $paramValue);
+                $name = $result[0]['name'];  
+                
+                return $name;
+            }
+        }
+    }
 }

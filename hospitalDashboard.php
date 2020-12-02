@@ -25,6 +25,7 @@
 
 <body>
     <?php include("./Components/navbar.php"); ?>
+    <?php include("./Components/welcomeBanner.php"); ?>
     <form action="" method="post" name="add_blood_type">
         <input type="text" name="blood_type" placeholder="A+, O+, AB-, etc..." required />
         <input name="submit" type="submit" value="Submit" />
