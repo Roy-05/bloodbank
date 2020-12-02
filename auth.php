@@ -1,5 +1,12 @@
 <?php
 session_start();
-if(!isset($_SESSION["user_id"])){
-header("Location: login.php");
-exit(); }
+
+if(!$_SESSION['logged_in']){
+    header("Location: index.php");
+    exit(); 
+}
+elseif($_SESSION['logged_in'] && $_SESSION['user_type']=="R"){
+    header("Location: viewSamples.php");
+    exit(); 
+}
+?>

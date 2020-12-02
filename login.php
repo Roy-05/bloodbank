@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_REQUEST['email'])) {
     require_once('./Model/User.php');
     $member = new User();

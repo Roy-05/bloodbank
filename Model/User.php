@@ -126,7 +126,6 @@ class User
         if (! empty($memberRecord)) {
             if (! empty($_POST["password"])) {
                 $password = $_POST["password"];
-                echo $password;
             }
             $hashedPassword = $memberRecord[0]["password"];
             $loginPassword = 0;
@@ -142,6 +141,7 @@ class User
             session_start();
             $_SESSION["user_id"] = $memberRecord[0]["user_id"];
             $_SESSION['logged_in'] = true;
+            $_SESSION['user_type'] = $memberRecord[0]["user_type"];
             session_write_close();
             $url = ($memberRecord[0]["user_type"] == "H") ?  "./hospitalDashboard.php" : "./viewSamples.php";
             header("Location: $url");
