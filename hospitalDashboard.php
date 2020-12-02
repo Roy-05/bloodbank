@@ -22,11 +22,35 @@
     </form>
     <div>
         <?php
-         $html = "<table>";
+         $html = "<table>
+                    <tr>
+                        <th>Available Blood:</th>
+                        <th>Added On:</th>
+                    </tr>";
          $avb_blood = $dashboard->viewAvailableBlood();
          foreach ($avb_blood as $row){
-            $html .= "<tr><td>".$row['avb_blood_type']."</td>";
-            $html .= "<td>".$row['added_on']."</td></tr>";
+            $html .= "<tr>
+                        <td>$row[avb_blood_type]</td>
+                        <td>$row[added_on]</td>
+                      </tr>";
+         }      
+         $html .= "</table>";
+
+         echo $html;
+
+         $html = "<table>
+                    <tr>
+                        <th>Requested By:</th>
+                        <th>Requested Type:</th>
+                        <th>Request Date:</th>
+                    </tr>";
+         $sample_requests = $dashboard->viewSampleRequests();
+         foreach ($sample_requests as $row){
+            $html .= "<tr>
+                        <td>$row[first_name] $row[last_name]</td>
+                        <td>$row[rcvr_blood_type]</td>
+                        <td>$row[req_date]</td>
+                      </tr>";
          }      
          $html .= "</table>";
 

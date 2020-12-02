@@ -28,10 +28,7 @@
                   >View Samples</a
                 >
               </li>
-              <?php 
-                session_start();
-                if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true){
-                  echo '
+             
                     <li class="nav-item">
                       <a
                         class="nav-link text-dark"
@@ -56,15 +53,14 @@
                           href="registerReceiver.php"
                         >As a Receiver</a>
                       </div>
-                    </li>';
-                } else{
-                    echo '<li class="nav-item">
+                    </li>
+               <li class="nav-item">
                             <a class="nav-link text-dark" href="logout.php">
                             Logout
                             </a>
-                          </li>';
-                  } 
-                ?>
+                          </li>
+                
+              
             </ul>
           </div>
         </nav>

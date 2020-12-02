@@ -48,6 +48,21 @@ class Dashboard {
 
         return $this->ds->select($query, $paramType, $paramValue);
     }
+
+    function viewSampleRequests() {
+        $query = 'SELECT first_name, last_name, rcvr_blood_type, req_date
+                    FROM Receivers
+                    INNER JOIN Requests
+                    USING (rcvr_id)
+                    WHERE hos_id = ?';
+        
+        $paramType = 'i';
+        $paramValue = array(
+            $this->hos_id
+        );
+
+        return $this->ds->select($query, $paramType, $paramValue);
+    }
 }
 
 
