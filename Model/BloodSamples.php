@@ -35,7 +35,6 @@
             $result = $this->ds->select($query, $paramType, $paramValue);
            
                 $rcvr_id = $result[0]["rcvr_id"];
-                var_dump($_SESSION['user_id']);
             
         }
         

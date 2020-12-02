@@ -143,6 +143,7 @@ class User
             session_write_close();
             $url = ($memberRecord[0]["user_type"] == "H") ?  "./hospitalDashboard.php" : "./viewSamples.php";
             header("Location: $url");
+            exit();
         } else if ($loginPassword == 0) {
             $loginStatus = "Invalid username or password.";
             return $loginStatus;
@@ -157,7 +158,7 @@ class User
         session_start();
         if ($_SESSION['logged_in']) {
             $user_type = $_SESSION["user_type"];
-            if ($user_type == "R") {
+            if ($user_type === "R") {
                 $query = "SELECT first_name, last_name FROM Receivers
                             WHERE user_id = ?";
                 $paramType = "i";
@@ -178,7 +179,7 @@ class User
 
                 $result = $this->ds->select($query, $paramType, $paramValue);
                 $name = $result[0]['name'];
-
+                
                 return $name;
             }
         }

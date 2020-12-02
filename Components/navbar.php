@@ -13,6 +13,17 @@
       </li>
       <?php
       session_start();
+      if($_SESSION['logged_in'] && $_SESSION['user_type'] == "H"){
+        echo '
+        <li class="nav-item">
+          <a
+            class="nav-link text-dark"
+            href = "hospitalDashboard.php">
+            Dashboard
+          </a>
+        </li>';
+      }
+
       if (!$_SESSION['logged_in']) {
         echo '
           <li class="nav-item">
