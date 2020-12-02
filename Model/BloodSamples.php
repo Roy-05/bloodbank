@@ -17,25 +17,20 @@
             return $this->ds->select($query);
         }
 
-        function requestBloodSample() {
-            session_start();
-            $user_id =  $_SESSION['user_id'];
-
-            if(!$user_id){
-                header("Location: index.php");
-                exit();
-            }
-
-            $query = "SELECT rcvr_id FROM Receivers WHERE user_id = ?";
+        function getRequests($hos_id)
+        {
+            $query = 'SELECT first_name, last_name, rcvr_blood_type, req_date
+                            FROM Receivers
+                            INNER JOIN Requests
+                            USING (rcvr_id)
+                            WHERE hos_id = ?';
+    
             $paramType = 'i';
             $paramValue = array(
-                $_SESSION['user_id']
+                $hos_id
             );
-
+    
             $result = $this->ds->select($query, $paramType, $paramValue);
-           
-                $rcvr_id = $result[0]["rcvr_id"];
-            
+            echo $result;
         }
-        
     }
