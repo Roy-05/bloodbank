@@ -64,7 +64,3 @@ class Dashboard {
         return $this->ds->select($query, $paramType, $paramValue);
     }
 }
-
-
-
-?>

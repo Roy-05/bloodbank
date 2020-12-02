@@ -1,18 +1,18 @@
 <?php
-    session_start();
-    // Deny access to this path if the user is logged in,
-    // instead redirect them to the right starting point.
-    if($_SESSION['logged_in']){
-        $url =  $_SESSION['user_type'] == "H" ?  "./hospitalDashboard.php" : "./viewSamples.php";
-        header("Location: $url");
-        exit(); 
-    }
+session_start();
+// Deny access to this path if the user is logged in,
+// instead redirect them to the right starting point.
+if ($_SESSION['logged_in']) {
+    $url =  $_SESSION['user_type'] == "H" ?  "./hospitalDashboard.php" : "./viewSamples.php";
+    header("Location: $url");
+    exit();
+}
 
-    if (!empty($_POST["register_btn"])) {
-        require_once('./Model/User.php');
-        $member = new User();
-        $registrationResponse = $member->registerMember('H');
-    }
+if (!empty($_POST["register_btn"])) {
+    require_once('./Model/User.php');
+    $member = new User();
+    $registrationResponse = $member->registerMember('H');
+}
 ?>
 <!DOCTYPE html>
 <html>

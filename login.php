@@ -4,10 +4,10 @@ session_start();
 
 // Deny access to this path if the user is logged in,
 // instead redirect them to the right starting point.
-if($_SESSION['logged_in']){
+if ($_SESSION['logged_in']) {
     $url =  $_SESSION['user_type'] == "H" ?  "./hospitalDashboard.php" : "./viewSamples.php";
     header("Location: $url");
-    exit(); 
+    exit();
 }
 
 if (isset($_REQUEST['email'])) {
@@ -19,11 +19,13 @@ if (isset($_REQUEST['email'])) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <?php include("./Components/head.php") ?>
     <title>Login</title>
 </head>
 <?php include("./Components/navbar.php") ?>
+
 <body>
     <div class="form">
         <h1>Log In</h1>

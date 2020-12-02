@@ -50,8 +50,8 @@ class User
                 "message" => "User already exists."
             );
         } else {
-           
-            if (! empty($_POST["password"])) {
+
+            if (!empty($_POST["password"])) {
 
                 $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
             }
@@ -63,33 +63,32 @@ class User
                 $user_type
             );
             $insertId = $this->ds->insert($query, $paramType, $paramValue);
-            
 
-            if($user_type === 'H'){
-              $query =  "INSERT into Hospitals(name, user_id)
+
+            if ($user_type === 'H') {
+                $query =  "INSERT into Hospitals(name, user_id)
                             VAlUES (?, (SELECT user_id from `Logins` WHERE email=?))";
-              $paramType = 'ss';
-              $paramValue = array(
-                $_POST["hos_name"],
-                $_POST["email"]
-            );
+                $paramType = 'ss';
+                $paramValue = array(
+                    $_POST["hos_name"],
+                    $_POST["email"]
+                );
 
-            $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
-            }
-            else {
+                $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
+            } else {
                 $query =  "INSERT into Receivers(first_name, last_name, rcvr_blood_type, user_id)
                             VALUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
-              $paramType = 'ssss';
-              $paramValue = array(
-                $_POST["first_name"],
-                $_POST["last_name"],
-                $_POST["blood_type"],
-                $_POST["email"],
-            );
+                $paramType = 'ssss';
+                $paramValue = array(
+                    $_POST["first_name"],
+                    $_POST["last_name"],
+                    $_POST["blood_type"],
+                    $_POST["email"],
+                );
 
-            $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
+                $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
             }
-            
+
             if (!empty($insertId) && !empty($insertId1)) {
                 // $response = array(
                 //     "status" => "success",
@@ -97,7 +96,6 @@ class User
                 // );
 
                 header("Location: login.php");
-                        
             }
         }
         //return $response;
@@ -123,8 +121,8 @@ class User
     {
         $memberRecord = $this->getMember($_POST["email"]);
         $loginPassword = 0;
-        if (! empty($memberRecord)) {
-            if (! empty($_POST["password"])) {
+        if (!empty($memberRecord)) {
+            if (!empty($_POST["password"])) {
                 $password = $_POST["password"];
             }
             $hashedPassword = $memberRecord[0]["password"];
@@ -157,9 +155,9 @@ class User
     public function getUserName()
     {
         session_start();
-        if($_SESSION['logged_in']){
+        if ($_SESSION['logged_in']) {
             $user_type = $_SESSION["user_type"];
-            if($user_type == "R"){
+            if ($user_type == "R") {
                 $query = "SELECT first_name, last_name FROM Receivers
                             WHERE user_id = ?";
                 $paramType = "i";
@@ -168,11 +166,10 @@ class User
                 );
 
                 $result = $this->ds->select($query, $paramType, $paramValue);
-                $name = $result[0]['first_name'].' '.$result[0]['last_name'];  
-                
+                $name = $result[0]['first_name'] . ' ' . $result[0]['last_name'];
+
                 return $name;
-            }
-            else {
+            } else {
                 $query = "SELECT name FROM Hospitals WHERE user_id = ?";
                 $paramType = "i";
                 $paramValue = array(
@@ -180,8 +177,8 @@ class User
                 );
 
                 $result = $this->ds->select($query, $paramType, $paramValue);
-                $name = $result[0]['name'];  
-                
+                $name = $result[0]['name'];
+
                 return $name;
             }
         }
