@@ -17,7 +17,7 @@
             return $this->ds->select($query);
         }
 
-        function getRequests($hos_id)
+        function getSampleRequests($hos_id)
         {
             $query = 'SELECT first_name, last_name, rcvr_blood_type, req_date
                             FROM Receivers

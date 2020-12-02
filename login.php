@@ -22,20 +22,31 @@ if (isset($_REQUEST['email'])) {
 
 <head>
     <?php include("./Components/head.php") ?>
+    <link rel="stylesheet" href="./css/login.css">
     <title>Login</title>
 </head>
 <?php include("./Components/navbar.php") ?>
 
 <body>
-    <div class="form">
-        <h1>Log In</h1>
-        <form action="" method="post" name="login">
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="password" name="password" placeholder="Password" required />
-            <input name="login_btn" type="submit" value="Login" />
-
-        </form>
+    
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+                <form action="" method="post" name="login">
+                    <h4>Sign In</h4>
+                    <input type="email" name="email" placeholder="Email"  id="userName" class="form-control input-sm chat-input" required />
+                    <input type="password" name="password" placeholder="Password"  id="userPassword" class="form-control input-sm chat-input"required />
+                    <div class="wrapper">
+                        <span class="group-btn">     
+                            <input name="login_btn" class="btn btn-primary btn-md" type="submit" value="Login" />
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 </body>
 
 </html>
