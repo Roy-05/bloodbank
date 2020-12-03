@@ -8,8 +8,9 @@ if (!$_SESSION['logged_in'] || $_SESSION['user_type'] !== "H") {
     exit();
 };
 
-require_once('./Model/Dashboard.php');
+require_once("./Model/Dashboard.php");
 $dashboard = new Dashboard();
+echo var_dump($dashboard);
 
 if (isset($_POST['blood_type'])) {
     $response = $dashboard->isValidSample($_POST['blood_type']);
@@ -25,12 +26,12 @@ if (isset($_POST['blood_type'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include("./components/head.php"); ?>
+        <?php include("../component/head.php"); ?>
         <title>Dashboard</title>
     </head>
     <body>
-        <?php include("./components/navbar.php"); ?>
-        <?php include("./components/welcomeBanner.php"); ?>
+        <?php include("../component/navbar.php"); ?>
+        <?php include("../component/welcomeBanner.php"); ?>
         <div>
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#menu1">View Requests</a></li>
