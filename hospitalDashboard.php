@@ -11,62 +11,84 @@ if (!$_SESSION['logged_in'] || $_SESSION['user_type'] !== "H") {
 require_once('./Model/Dashboard.php');
 $dashboard = new Dashboard();
 
-if (isset($_REQUEST['blood_type'])) {
+if (isset($_POST['blood_type'])) {
     $dashboard->addBloodSample();
 }
 ?>
 <!DOCTYPE html>
 <html>
+    <head>
+        <?php include("./components/head.php"); ?>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <?php include("./components/navbar.php"); ?>
+        <?php include("./components/welcomeBanner.php"); ?>
+        <div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#menu1">View Requests</a></li>
+                <li><a data-toggle="tab" href="#menu2">View Available Samples</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="menu1" class="tab-pane fade in active show">
+                <h3>View Requests</h3>
+                <?php
+                    $html = "
+                        <table class='table table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>Requested By:</th>
+                                    <th>Requested Type:</th>
+                                    <th>Request Date:</th>
+                                </tr>
+                            </thead>
+                            <tbody>";
 
-<head>
-    <?php include("./Components/head.php"); ?>
-    <title>Dashboard</title>
-</head>
+                    $sample_requests = $dashboard->viewSampleRequests();
+                    foreach ($sample_requests as $row) {
+                        $html .= "
+                            <tr>
+                                <td>$row[first_name] $row[last_name]</td>
+                                <td>$row[rcvr_blood_type]</td>
+                                <td>".date('d-m-Y',strtotime($row['req_date']))."</td>
+                            </tr></thead>";
+                    }
 
-<body>
-    <?php include("./Components/navbar.php"); ?>
-    <?php include("./Components/welcomeBanner.php"); ?>
-    <form action="" method="post" name="add_blood_type">
-        <input type="text" name="blood_type" placeholder="A+, O+, AB-, etc..." required />
-        <input name="submit" type="submit" value="Submit" />
-    </form>
-    <div>
-        <?php
-        $html = "<table>
-                    <tr>
-                        <th>Available Blood:</th>
-                        <th>Added On:</th>
-                    </tr>";
-        $avb_blood = $dashboard->viewAvailableBlood();
-        foreach ($avb_blood as $row) {
-            $html .= "<tr>
-                        <td>$row[avb_blood_type]</td>
-                        <td>$row[added_on]</td>
-                      </tr>";
-        }
-        $html .= "</table>";
+                    $html .= "</tbody></table>";
 
-        echo $html;
+                    echo $html;
+                ?>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>View Available Samples</h3>
+                <div class="container">
+                    <!-- Trigger modal on button click-->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBloodModal">
+                    Add New Sample
+                    </button>
+                    <?php include_once("./addBloodModal.php") ?>
+                    <?php
+                        $html = "
+                            <table class='table table-hover'>
+                                <tr>
+                                    <th>Available Blood:</th>
+                                    <th>Added On:</th>
+                                </tr>"; 
+                        $avb_blood = $dashboard->viewAvailableBlood();
+                        foreach ($avb_blood as $row) {
+                            $html .= "
+                                <tr>
+                                    <td>$row[avb_blood_type]</td>
+                                    <td>".date('d-m-Y',strtotime($row['added_on']))."</td>
+                                </tr>";
+                        }
 
-        $html = "<table>
-                    <tr>
-                        <th>Requested By:</th>
-                        <th>Requested Type:</th>
-                        <th>Request Date:</th>
-                    </tr>";
-        $sample_requests = $dashboard->viewSampleRequests();
-        foreach ($sample_requests as $row) {
-            $html .= "<tr>
-                        <td>$row[first_name] $row[last_name]</td>
-                        <td>$row[rcvr_blood_type]</td>
-                        <td>$row[req_date]</td>
-                      </tr>";
-        }
-        $html .= "</table>";
+                        $html .= "</table>";
 
-        echo $html;
-        ?>
-    </div>
-</body>
-
+                        echo $html;
+                    ?>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

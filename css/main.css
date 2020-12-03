@@ -6,7 +6,7 @@ html {
   font-family: "Ubuntu", sans-serif;
   /* overflow-y: hidden; */
   overflow-x: hidden;
-  background-color: #F2EDD9;
+  background-color: #fafafa;
   color: #59615C;
 }
 
@@ -14,15 +14,15 @@ html {
 .nav-link,
 .navbar-brand {
   font-size: 1.1rem;
-  letter-spacing: 2px;
-  font-weight: bolder;
+  letter-spacing: 1px;
+  font-weight: 900;
 }
 
 .navbar {
    
-    -webkit-box-shadow: 0 6px 6px -6px #999;
-    -moz-box-shadow: 0 6px 6px -6px #999;
-    box-shadow: 0 6px 6px -6px #999;
+    -webkit-box-shadow: 0 5px 6px -6px #999;
+    -moz-box-shadow: 0 5px 6px -6px #999;
+    box-shadow: 0 5px 6px -6px #999;
     border-radius:  10px;
 }
 
@@ -52,6 +52,10 @@ html {
     color: #fff;
     font-weight: bolder ;
     transition: 300ms;
+  }
+
+  .nav-link {
+      color: #000;
   }
 }
 

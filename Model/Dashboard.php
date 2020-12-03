@@ -26,10 +26,10 @@ class Dashboard {
      * Insert a new blood sample to the database 
      */
     public function addBloodSample() {
-       
         $query = "INSERT INTO AvailableBlood(hos_id, avb_blood_type, added_on) 
                     VALUES(?, ?, CURDATE())";
         
+
         $paramType = 'is';
         $paramValue = array(
             $this->hos_id,

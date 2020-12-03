@@ -58,15 +58,12 @@ class Requests
     }   
 
     function requestBloodSample($hos_id) {
-
-        $date = date('Y-m-d');
         $query = "INSERT INTO Requests(rcvr_id, hos_id, req_date)
-                    VALUES (?, ?, ?)";
-        $paramType = 'iis';
+                    VALUES (?, ?, CURDATE())";
+        $paramType = 'ii';
         $paramValue = array(
             $this->rcvr_id,
-            $hos_id,
-            $date
+            $hos_id
         );
 
         $result = $this->ds->insert($query, $paramType, $paramValue);

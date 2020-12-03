@@ -17,11 +17,11 @@ if (!empty($_POST["register_btn"])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include("./Components/head.php") ?>
+        <?php include("./components/head.php") ?>
         <title>Register - Hospital</title>
     </head>
     <body>
-        <?php include("./Components/navbar.php") ?>
+        <?php include("./components/navbar.php") ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">

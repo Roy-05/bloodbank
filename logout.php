@@ -7,8 +7,5 @@ if (!$_SESSION['logged_in']) {
 
 // Destroying All Sessions
 if (session_destroy()) {
-    echo "You have been logged out";
-    echo '<div>
-            <a href=login.php>Click here</a> to Login.
-          </div>';
+    header("Location: index.php");
 }
