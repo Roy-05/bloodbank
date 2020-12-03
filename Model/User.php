@@ -141,7 +141,7 @@ class User
             $_SESSION['logged_in'] = true;
             $_SESSION['user_type'] = $memberRecord[0]["user_type"];
             session_write_close();
-            $url = ($memberRecord[0]["user_type"] == "H") ?  "./hospitalDashboard.php" : "./viewSamples.php";
+            $url = ($memberRecord[0]["user_type"] == "H") ?  "./dashboard.php" : "./viewSamples.php";
             header("Location: $url");
             exit();
         } else if ($loginPassword == 0) {

@@ -12,7 +12,14 @@ require_once('./Model/Dashboard.php');
 $dashboard = new Dashboard();
 
 if (isset($_POST['blood_type'])) {
-    $dashboard->addBloodSample();
+    $response = $dashboard->isValidSample($_POST['blood_type']);
+   
+    if($response["status"] === "success"){
+        $dashboard->addBloodSample();
+    }
+    else {
+        echo $response["message"];
+    }
 }
 ?>
 <!DOCTYPE html>

@@ -22,10 +22,59 @@ class Dashboard {
         $this->hos_id = $result[0]['hos_id'];
     }
 
+    public function isValidSample($blood_type){
+        $blood_type = strtoupper($blood_type);
+        $valid_blood_types = array(
+            "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"
+        );
+
+        // Check if the blood type is a valid string
+        if(!in_array($blood_type, $valid_blood_types)){
+            $response = array(
+                "status" => "error",
+                "message" => "Entered value is not a valid blood type"
+            );
+
+            return $response;
+        };
+
+        // Check if the blood type already exists in the database
+        $query = "SELECT avb_id FROM AvailableBlood
+                    WHERE avb_blood_type = ?
+                    AND hos_id = ?";
+        
+        $paramType = "si";
+        $paramValue = array(
+            $blood_type,
+            $this->hos_id
+        );
+
+        $result = $this->ds->select($query, $paramType, $paramValue);
+        if($result) {
+            $response = array(
+                "status" => "error",
+                "message" => "Blood Type already in the database."
+            );
+
+            return $response;
+        }
+
+        $response = array(
+            "status" => "success",
+            "message" => "Blood Type can be added to the database."
+        );
+
+        return $response;
+    }   
+
     /**
      * Insert a new blood sample to the database 
      */
     public function addBloodSample() {
+
+        //Store blood type in upper case
+        $blood_type = strtoupper($_POST['blood_type']);
+
         $query = "INSERT INTO AvailableBlood(hos_id, avb_blood_type, added_on) 
                     VALUES(?, ?, CURDATE())";
         
@@ -33,7 +82,7 @@ class Dashboard {
         $paramType = 'is';
         $paramValue = array(
             $this->hos_id,
-            $_POST['blood_type']
+            $blood_type
         );
 
         $this->ds->insert($query, $paramType, $paramValue);

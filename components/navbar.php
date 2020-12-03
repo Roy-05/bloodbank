@@ -18,7 +18,7 @@
         <li class="nav-item">
           <a
             class="nav-link "
-            href = "hospitalDashboard.php">
+            href = "dashboard.php">
             Dashboard
           </a>
         </li>';
