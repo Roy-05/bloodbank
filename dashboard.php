@@ -43,15 +43,17 @@ if (isset($_POST['blood_type'])) {
                     </a>
                 </div>
             </nav>
-            <div class="tab-content d-flex justify-content-center mt-4">
+            <div class="tab-content d-flex justify-content-center my-4">
                 <div id="menu1" class="tab-pane fade show active">
                     <?php include_once("./viewRequestsTable.php") ?>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <!-- Trigger modal on button click-->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBloodModal">
-                    Add New Sample
-                    </button>
+                    <div class="row justify-content-center">
+                        <button id="addNewBlood" type="button" class="btn btn-rounded mb-4" data-toggle="modal" data-target="#addBloodModal">
+                        Add New Sample
+                        </button>
+                    </div>
                     <?php include_once("./addBloodModal.php") ?>
                     <?php include_once("./viewAvbBloodTable.php") ?>
                 </div>

@@ -1,6 +1,6 @@
 <!-- This component is a simple banner to display the currently logged in user. -->
 <div>
-    <h2 class="my-4">
+    <h2 class="my-4 mx-3">
         Welcome, 
         <?php
         require_once("./Model/User.php");

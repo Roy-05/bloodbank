@@ -2,14 +2,15 @@
 <html lang="en">
     <head>  
         <?php include("./components/head.php") ?>
+        <link rel="stylesheet" href="./css/index.css">
         <title>Saket's Bloodbank</title>
     </head>
     <body>
         <?php include("./components/navbar.php") ?>
         <div class="h-75 d-flex justify-content-center align-items-center text-center">
-            <div class="jumbotron w-50">
-                <h1 class="display-4">
-                    Welcome to Saket's Bloodbank.
+            <div class="jumbotron  w-50">
+                <h1 class="display-4 ">
+                    Welcome to Saket's Bloodbank
                 </h1>
                 <div class="row justify-content-center">
                     <a
