@@ -26,26 +26,28 @@ if (isset($_POST['blood_type'])) {
 <html>
     <head>
         <?php include("./components/head.php"); ?>
-        <title>Dashboard</title>
+        <link rel="stylesheet" href="./css/dashboard.css">
+        <title>Dashboard </title>
     </head>
     <body>
         <?php include("./components/navbar.php"); ?>
         <?php include("./components/welcomeBanner.php"); ?>
-        <div>
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#menu1">View Requests</a></li>
-                <li><a data-toggle="tab" href="#menu2">View Available Samples</a></li>
-            </ul>
-            <div class="tab-content">
-                <div id="menu1" class="tab-pane fade in active show">
-                <h3>View Requests</h3>
-                <div class="container  w-50">
-                <?php include_once("./viewRequestsTable.php") ?>
+        <div class="container w-75">
+            <nav>
+                <div class="nav nav-tabs row">
+                    <a class="nav-item nav-link active col-6 text-center py-3" data-toggle="tab" href="#menu1">
+                        View Requests
+                    </a>
+                    <a class="nav-item nav-link col-6 text-center py-3" data-toggle="tab" href="#menu2">
+                        View Available Samples
+                    </a>
                 </div>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <h3>View Available Samples</h3>
-                <div class="container w-50">
+            </nav>
+            <div class="tab-content d-flex justify-content-center mt-4">
+                <div id="menu1" class="tab-pane fade show active">
+                    <?php include_once("./viewRequestsTable.php") ?>
+                </div>
+                <div id="menu2" class="tab-pane fade">
                     <!-- Trigger modal on button click-->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBloodModal">
                     Add New Sample

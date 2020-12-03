@@ -12,7 +12,8 @@
         function getAvailableSamples() {
             $query = "SELECT name, avb_blood_type, added_on, hos_id FROM AvailableBlood
                         JOIN Hospitals
-                        USING(hos_id)";
+                        USING(hos_id)
+                        ORDER BY added_on DESC";
 
             return $this->ds->select($query);
         }

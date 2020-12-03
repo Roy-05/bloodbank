@@ -1,6 +1,6 @@
 <!-- This component is a simple banner to display the currently logged in user. -->
 <div>
-    <span>
+    <h2 class="my-4">
         Welcome, 
         <?php
         require_once("./Model/User.php");
@@ -9,5 +9,5 @@
         
         echo $user_name;
         ?>
-    </span>
+    </h2>
 </div>
