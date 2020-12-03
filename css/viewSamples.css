@@ -9,7 +9,7 @@
     color:   black;
     letter-spacing: 1px;
     transition: all 0.5s;
-    font-size: 18px;
+    font-size: 1rem;
     border-radius: 30px;
     font-weight: bolder;
 }

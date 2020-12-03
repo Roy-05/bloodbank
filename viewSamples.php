@@ -45,9 +45,18 @@
                         </tr>
                         <tr>
                             <td class=req_btn_cell>
-                                <button id=requestSamplebtn type=button class='btn btn-rounded' data-toggle=modal data-target=#addBloodModal>
-                                Request
-                                </button>
+                                <a 
+                                id=requestSamplebtn 
+                                type=button 
+                                class='btn btn-rounded'";
+
+                    $html .= !$_SESSION['logged_in'] ? 
+                                "href=login.php>" : 
+                                "data-toggle=modal 
+                                data-target=#addBloodModal>";
+                                
+                    $html .=    "Request
+                                </a>
                             </td>
                         </tr>";
                 }
