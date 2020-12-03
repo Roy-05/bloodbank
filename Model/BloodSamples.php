@@ -16,21 +16,4 @@
 
             return $this->ds->select($query);
         }
-
-        function getSampleRequests($hos_id)
-        {
-            $query = 'SELECT first_name, last_name, rcvr_blood_type, req_date
-                            FROM Receivers
-                            INNER JOIN Requests
-                            USING (rcvr_id)
-                            WHERE hos_id = ?';
-    
-            $paramType = 'i';
-            $paramValue = array(
-                $hos_id
-            );
-    
-            $result = $this->ds->select($query, $paramType, $paramValue);
-            echo $result;
-        }
     }

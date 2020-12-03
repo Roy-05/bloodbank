@@ -1,10 +1,95 @@
-html, body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+body,
+html {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Ubuntu", sans-serif;
+  /* overflow-y: hidden; */
+  overflow-x: hidden;
+  background-color: #F2EDD9;
+  color: #59615C;
 }
 
-body {
-    background-color: #fff7f7;
+
+.nav-link,
+.navbar-brand {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  font-weight: bolder;
 }
+
+.navbar {
+   
+    -webkit-box-shadow: 0 6px 6px -6px #999;
+    -moz-box-shadow: 0 6px 6px -6px #999;
+    box-shadow: 0 6px 6px -6px #999;
+    border-radius:  10px;
+}
+
+
+
+.jumbotron {
+    background-color: transparent;
+  /* background-color: #D5535B; */
+  border-radius: 10px;
+}
+
+.btn-rounded { 
+    background-color: transparent;
+  border: 2px solid black;
+  color: black;
+  letter-spacing: 1px;
+  transition: all 0.5s;
+  font-size: 18px;
+  border-radius: 30px;
+  font-weight: bolder;
+}
+
+@media (hover: hover) {
+  .btn-rounded:hover {
+    background-color: #D5535B;
+    border: 2px solid #D5535B;
+    color: #fff;
+    font-weight: bolder ;
+    transition: 300ms;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 36px !important;
+  }
+}
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+    }
+    
+    .form-signin .btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+    }
+    
+    .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+    }
+    
+    .form-label-group input {
+    height: auto;
+    border-radius: 2rem;
+    }
+    
+    

@@ -10,43 +10,58 @@ if ($_SESSION['logged_in']) {
     exit();
 }
 
-if (isset($_REQUEST['email'])) {
+if (!empty($_POST['login_btn'])){
+    echo var_dump($_POST);
     require_once('./Model/User.php');
     $member = new User();
     $loginResult = $member->loginMember();
     echo $loginResult;
 }
+
 ?>
+
 <!DOCTYPE html>
 <html>
-
-<head>
-    <?php include("./Components/head.php") ?>
-    <link rel="stylesheet" href="./css/login.css">
-    <title>Login</title>
-</head>
-<?php include("./Components/navbar.php") ?>
-
-<body>
-    
-<div class="container">
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-                <form action="" method="post" name="login">
-                    <h4>Sign In</h4>
-                    <input type="email" name="email" placeholder="Email"  id="userName" class="form-control input-sm chat-input" required />
-                    <input type="password" name="password" placeholder="Password"  id="userPassword" class="form-control input-sm chat-input"required />
-                    <div class="wrapper">
-                        <span class="group-btn">     
-                            <input name="login_btn" class="btn btn-primary btn-md" type="submit" value="Login" />
-                        </span>
+    <head>
+        <?php include("./Components/head.php") ?>
+        <link rel="stylesheet" href="./css/login.css">
+        <title>Login</title>
+    </head>
+    <body>
+        <?php include("./Components/navbar.php") ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body p-4">
+                            <h5 class="card-title text-center">Sign In</h5>
+                            <form class="form-signin w-100" action="" method="post" name="login">
+                                <div class="form-label-group">
+                                    <label for="loginEmail">Email address:</label>
+                                    <input type="email" name="email" id="loginEmail" class="form-control" placeholder="john.doe@example.com" required>
+                                </div>
+                                <div class="form-label-group">
+                                    <label for="loginPassword">Password:</label>
+                                    <input type="password" name="password" id="loginPassword" class="form-control" placeholder="Password" required>
+                                </div>
+                                <input type="submit" name="login_btn" class="btn btn-lg btn-primary btn-block" value="SIGN IN" />
+                                <hr class="my-4">
+                                <div>
+                                    Dont have an account yet? 
+                                </div>
+                                <div>
+                                    Register (
+                                    <a href="registerHospital.php">Hospital</a>
+                                    /
+                                    <a href="registerReceiver.php">Receiver</a>
+                                    )
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</body>
-
+    </body>
 </html>
+

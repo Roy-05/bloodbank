@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link text-dark" href="index.php">Home</a>
+        <a class="nav-link " href="index.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark" href="viewSamples.php">View Samples</a>
+        <a class="nav-link " href="viewSamples.php">View Samples</a>
       </li>
       <?php
       session_start();
@@ -17,7 +17,7 @@
         echo '
         <li class="nav-item">
           <a
-            class="nav-link text-dark"
+            class="nav-link "
             href = "hospitalDashboard.php">
             Dashboard
           </a>
@@ -28,14 +28,14 @@
         echo '
           <li class="nav-item">
             <a
-              class="nav-link text-dark"
+              class="nav-link "
               href = "login.php">
               Login
             </a>
           </li>
           <li class="nav-item dropdown">
             <a 
-              class="nav-link text-dark dropdown-toggle" 
+              class="nav-link  dropdown-toggle" 
               href="#" 
               id="dropdownMenuLink" 
               data-toggle="dropdown">
@@ -43,12 +43,12 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a 
-                class="nav-link text-dark dropdown-item" 
+                class="nav-link  dropdown-item" 
                 href="registerHospital.php">
                 As a Hospital
               </a>
               <a 
-                class="nav-link text-dark dropdown-item" 
+                class="nav-link  dropdown-item" 
                 href="registerReceiver.php">
                 As a Receiver
               </a>
@@ -57,7 +57,7 @@
       } else {
         echo '
           <li class="nav-item">
-            <a class="nav-link text-dark" href="logout.php">
+            <a class="nav-link " href="logout.php">
               Logout
             </a>
           </li>';

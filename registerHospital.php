@@ -16,24 +16,42 @@ if (!empty($_POST["register_btn"])) {
 ?>
 <!DOCTYPE html>
 <html>
-
-<head>
-    <?php include("./Components/head.php") ?>
-    <title>Sign Up - Hospital</title>
-</head>
-
-<body>
-    <?php include("./Components/navbar.php") ?>
-    <div class="form">
-        <h1>Registration</h1>
-        <form name="registration" action="" method="post" autocomplete="off">
-            <input type="text" name="hos_name" placeholder="Hospital Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="password" name="password" placeholder="Password" required />
-            <input type="submit" name="register_btn" value="Register" />
-        </form>
-    </div>
-    <p>Already registered? <a href='login.php.'>Login Here</a></p>
-</body>
-
+    <head>
+        <?php include("./Components/head.php") ?>
+        <title>Register - Hospital</title>
+    </head>
+    <body>
+        <?php include("./Components/navbar.php") ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body p-4">
+                            <h5 class="card-title text-center">Register - Hospital</h5>
+                            <form class="form-signin w-100" action="" method="post" name="registration">
+                                <div class="form-label-group">
+                                    <label for="regHosName">Hospital Name:</label>
+                                    <input type="text" name="hos_name" id="regHosName" class="form-control" placeholder="AIIMS Hospital" required>
+                                </div>
+                                <div class="form-label-group">
+                                    <label for="regHosEmail">Official Email Address:</label>
+                                    <input type="email" name="email" id="regHosEmail" class="form-control" placeholder="name@hospital_name.com" required>
+                                </div>
+                                <div class="form-label-group">
+                                    <label for="regHosPassword">Password:</label>
+                                    <input type="password" name="password" id="regHosPassword" class="form-control" placeholder="Password" required>
+                                </div>
+                                <input type="submit" name="register_btn"  class="btn btn-lg btn-primary btn-block" value="REGISTER" />
+                                <hr class="my-4">
+                                <div>
+                                    Already have an account?    
+                                    <a href="login.php">Login.</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
