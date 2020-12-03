@@ -18,7 +18,7 @@ if (isset($_POST['blood_type'])) {
         $dashboard->addBloodSample();
     }
     else {
-        echo $response["message"];
+        //echo $response["message"];
     }
 }
 ?>
@@ -39,36 +39,38 @@ if (isset($_POST['blood_type'])) {
             <div class="tab-content">
                 <div id="menu1" class="tab-pane fade in active show">
                 <h3>View Requests</h3>
-                <?php
-                    $html = "
-                        <table class='table table-hover'>
-                            <thead>
+                <div class="container  w-50">
+                    <?php
+                        $html = "
+                            <table class='table table-hover'>
+                                <thead>
+                                    <tr>
+                                        <th>Requested By:</th>
+                                        <th>Requested Type:</th>
+                                        <th>Request Date:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>";
+
+                        $sample_requests = $dashboard->viewSampleRequests();
+                        foreach ($sample_requests as $row) {
+                            $html .= "
                                 <tr>
-                                    <th>Requested By:</th>
-                                    <th>Requested Type:</th>
-                                    <th>Request Date:</th>
-                                </tr>
-                            </thead>
-                            <tbody>";
+                                    <td>$row[first_name] $row[last_name]</td>
+                                    <td>$row[rcvr_blood_type]</td>
+                                    <td>".date('d-m-Y',strtotime($row['req_date']))."</td>
+                                </tr></thead>";
+                        }
 
-                    $sample_requests = $dashboard->viewSampleRequests();
-                    foreach ($sample_requests as $row) {
-                        $html .= "
-                            <tr>
-                                <td>$row[first_name] $row[last_name]</td>
-                                <td>$row[rcvr_blood_type]</td>
-                                <td>".date('d-m-Y',strtotime($row['req_date']))."</td>
-                            </tr></thead>";
-                    }
+                        $html .= "</tbody></table>";
 
-                    $html .= "</tbody></table>";
-
-                    echo $html;
-                ?>
+                        echo $html;
+                    ?>
+                </div>
             </div>
             <div id="menu2" class="tab-pane fade">
                 <h3>View Available Samples</h3>
-                <div class="container">
+                <div class="container w-50">
                     <!-- Trigger modal on button click-->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBloodModal">
                     Add New Sample
