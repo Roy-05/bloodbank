@@ -1,5 +1,5 @@
 <?php 
-    include("./components/navbar.php");
+   
     require_once("./Model/BloodSamples.php");
     require_once("./Model/Requests.php");
     $blood_samples = new BloodSamples();
@@ -9,12 +9,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <?php include("./components/head.php"); ?>
         <link rel="stylesheet" href="./css/viewSamples.css">
+        <script src="./loader.js"></script>
         <title>View Samples</title>
     </head>
     <body>
+        <div id="loader" class="center"></div> 
         <?php
+        include("./components/navbar.php");
         if (!$_SESSION['logged_in']) {
             echo "<div>Login to request blood samples</div>";
         } else {
@@ -41,14 +45,20 @@
                         </tr>
                         <tr>
                             <td class=req_btn_cell>
-                                <a 
-                                    href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
-                                    <button class=req_sample_btn>Request</button>
-                                </a>
+                                <button id=requestSamplebtn type=button class='btn btn-rounded' data-toggle=modal data-target=#addBloodModal>
+                                Request
+                                </button>
                             </td>
                         </tr>";
-                }   
-                //     if ($_SESSION['logged_in'] && $_SESSION['user_type'] === "R") {
+                }
+                
+            //     <td class=req_btn_cell>
+            //     <a 
+            //         href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
+            //         <button class=req_sample_btn>Request</button>
+            //     </a>
+            // </td>
+            //     //     if ($_SESSION['logged_in'] && $_SESSION['user_type'] === "R") {
                 //         $html .= "
                 //             <td>
                 //                 <a href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">

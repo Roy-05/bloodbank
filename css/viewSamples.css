@@ -1,3 +1,30 @@
 .req_btn_cell {
     border-top: none !important; 
 }
+
+
+.btn-rounded { 
+    background-color: transparent;
+    border: 2px solid black;
+    color:   black;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+    font-size: 18px;
+    border-radius: 30px;
+    font-weight: bolder;
+}
+
+.btn-rounded:focus{
+    outline: none;
+}
+  
+    
+  @media (hover: hover) {
+    .btn-rounded:hover {
+      background-color: rgb(213, 83, 91);
+      border: 2px solid #D5535B;
+      color: #fff;
+      font-weight: bolder ;
+      transition: 300ms;
+    }
+}
