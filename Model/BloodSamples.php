@@ -10,7 +10,7 @@
         }
 
         function getAvailableSamples() {
-            $query = "SELECT name, avb_blood_type, added_on, avb_id FROM AvailableBlood
+            $query = "SELECT name, avb_blood_type, added_on, hos_id FROM AvailableBlood
                         JOIN Hospitals
                         USING(hos_id)";
 

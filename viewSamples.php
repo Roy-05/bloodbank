@@ -30,7 +30,7 @@ foreach ($avb_samples as $row) {
     if ($_SESSION['logged_in'] && $_SESSION['user_type'] === "R") {
         $html .= "
                         <td>
-                            <a href=viewSamples.php?avb_id=$row[avb_id]>
+                            <a href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
                                 <button class=req_sample_btn>Request</button>
                             </a>
                         </td>
@@ -43,7 +43,11 @@ $html .= "</table>";
 
 echo $html;
 
-    if($_SESSION['user_type'] === "R" && $_GET["avb_id"]) {
-        $requests->requestBloodSample($_GET["avb_id"]);
+    if($_SESSION['user_type'] === "R" && $_GET["hos_id"] && $_GET["req_blood_type"]) {
+        $isValid = $requests->isValidRequest($_GET["hos_id"], $_GET['req_blood_type']);
+        if($isValid){
+            $requests->requestBloodSample($_GET["hos_id"]);
+
+        }
     }
 ?>
