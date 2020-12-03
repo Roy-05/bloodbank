@@ -6,16 +6,30 @@
     </head>
     <body>
         <?php include("./components/navbar.php") ?>
-        <div class="h-75 d-flex justify-content-center align-items-center">
-            <div class="jumbotron jumbotron-fluid text-center w-50">
+        <div class="h-75 d-flex justify-content-center align-items-center text-center">
+            <div class="jumbotron w-50">
                 <h1 class="display-4">
                     Welcome to Saket's Bloodbank.
                 </h1>
-                <a
-                class="btn btn-rounded mt-3"
-                href="viewSamples.php"
-                >View Available Samples
-                </a>
+                <div class="row justify-content-center">
+                    <a
+                    class="btn btn-rounded mt-3"
+                    href="viewSamples.php"
+                    >View Available Samples
+                    </a>
+                </div>
+                <?php session_start();
+                    if(!$_SESSION["logged_in"]){
+                        echo '
+                        <div class="row justify-content-center">
+                            <a
+                            class="btn btn-rounded mt-3"
+                            href="login.php"
+                            >Login
+                            </a>
+                        </div>';
+                    }
+                ?>
             </div>
         </div>
     </body>
