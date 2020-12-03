@@ -10,6 +10,7 @@
 <html>
     <head>
         <?php include("./components/head.php"); ?>
+        <link rel="stylesheet" href="./css/viewSamples.css">
         <title>View Samples</title>
     </head>
     <body>
@@ -20,10 +21,10 @@
             include("./components/welcomeBanner.php");
         }
         ?>
-        <div class="container">
+        <div class="container w-75 d-flex justify-content-center">
             <?php 
                 $html = "
-                    <table class='table table-hover'>
+                    <table class='table'>
                         <tr>
                             <th>Hospital Name</th>
                             <th>Available Blood</th>
@@ -34,22 +35,31 @@
                 foreach ($avb_samples as $row) {
                     $html .= "
                         <tr>
-                            <td>$row[name]</td>
-                            <td>$row[avb_blood_type]</td>
-                            <td>".date('d-m-Y',strtotime($row['added_on']))."</td>";
-
-                    if ($_SESSION['logged_in'] && $_SESSION['user_type'] === "R") {
-                        $html .= "
-                            <td>
-                                <a href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
+                            <td rowspan=2>$row[name]</td>
+                            <td  rowspan=2>$row[avb_blood_type]</td>
+                            <td >".date('d-m-Y',strtotime($row['added_on']))."</td>
+                        </tr>
+                        <tr>
+                            <td class=req_btn_cell>
+                                <a 
+                                    href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
                                     <button class=req_sample_btn>Request</button>
                                 </a>
                             </td>
                         </tr>";
-                    } else {
-                        $html .= "</tr>";
-                    }
-                }
+                }   
+                //     if ($_SESSION['logged_in'] && $_SESSION['user_type'] === "R") {
+                //         $html .= "
+                //             <td>
+                //                 <a href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
+                //                     <button class=req_sample_btn>Request</button>
+                //                 </a>
+                //             </td>
+                //         </tr>";
+                //     } else {
+                //         $html .= "</tr>";
+                //     }
+                // }
                 $html .= "</table>";
 
                 echo $html;
