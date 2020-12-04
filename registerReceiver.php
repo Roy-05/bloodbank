@@ -18,7 +18,7 @@
 <html>
     <head>
         <?php include("./components/head.php") ?>
-        <title>Sign Up - Receiver</title>
+        <title>Register - Receiver</title>
     </head>
     <body>
         <div id="loader" class="center"></div> 
