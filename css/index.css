@@ -1,23 +1,22 @@
 html,
 body {
-    color: #F7F6F0;
+    color: #F4F7F2;
     background-color: #F99198;
     background-image: linear-gradient(45deg, #F99198 50%, #F5F4F3 calc(50% + 1px));
     min-height: 500px;
   }
 
 .jumbotron {
-    background-color: rgba(140, 81, 99, 0.92);
+    background-color: rgba(152, 71, 87, 0.96);
     border-radius: 10px;
   }
 
 .btn-rounded { 
   background-color: transparent;
-border: 1px solid #f7f6f0;
-color: #F7F6F0;
-letter-spacing: 1px;
-transition: all 0.5s;
-font-size: 18px;
+border: 2px solid #F4F7F2;
+color: #F4F7F2;
+letter-spacing: 1.2px;
+font-size: 20px;
 border-radius: 30px;
 font-weight: bolder;
 }
@@ -50,7 +49,7 @@ font-weight: bolder;
 @media (hover: hover) {
   .btn-rounded:hover {
     background-color: rgb(213, 83, 91);
-    border: 1px solid #D5535B;
+    border: 2px solid black;
     color: #fff;
     font-weight: bolder ;
     transition: 300ms;

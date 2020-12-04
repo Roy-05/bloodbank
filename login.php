@@ -40,7 +40,7 @@
                                     <label for="loginEmail">Email address:</label>
                                     <input type="email" name="email" id="loginEmail" class="form-control" placeholder="john.doe@example.com" required>
                                 </div>
-                                <div class="form-label-group mb-4">
+                                <div class="form-label-group mb-3">
                                     <label for="loginPassword">Password:</label>
                                     <input type="password" name="password" id="loginPassword" class="form-control" placeholder="Password" required>
                                 </div>

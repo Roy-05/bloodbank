@@ -42,7 +42,7 @@ if (!empty($_POST["register_btn"])) {
                                     <label for="regHosEmail">Official Email Address:</label>
                                     <input type="email" name="email" id="regHosEmail" class="form-control" placeholder="name@hospital_name.com" required>
                                 </div>
-                                <div class="form-label-group mb-4">
+                                <div class="form-label-group mb-3">
                                     <label for="regHosPassword">Password:</label>
                                     <input type="password" name="password" id="regHosPassword" class="form-control" placeholder="Password" required>
                                 </div>

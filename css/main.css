@@ -4,7 +4,6 @@ html {
   height: 100vh;
   width: 100vw;
   font-family: "Ubuntu", sans-serif;
-  /* overflow-y: hidden; */
   overflow-x: hidden;
   background-color: #F5F4F3;
 }
@@ -58,6 +57,7 @@ html {
 
     .form-control {
       font-size: 14px;
+      border-radius: 0.5rem !important;
     }
     
   input.btn-rounded {

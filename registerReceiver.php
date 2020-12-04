@@ -51,7 +51,7 @@
                                     <label for="regRcvrEmail">Email Address:</label>
                                     <input type="email" name="email" id="regRcvrEmail" class="form-control" placeholder="name@hospital_name.com" required>
                                 </div>
-                                <div class="form-label-group mb-4">
+                                <div class="form-label-group mb-3">
                                     <label for="regRcvrPassword">Password:</label>
                                     <input type="password" name="password" id="regRcvrPassword" class="form-control" placeholder="Password" required>
                                 </div>

@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" name="submit" class="btn btn-primary" value="Submit" />
+                    <input type="submit" name="submit" class="btn btn-rounded" value="Submit" />
                 </div>
             </form>
         </div>
