@@ -82,6 +82,7 @@ class User
 
                 $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
             }
+            
             $query = 'INSERT INTO Logins (email, password, user_type) VALUES (?, ?, ?)';
             $paramType = 'sss';
             $paramValue = array(
@@ -116,7 +117,7 @@ class User
                 $paramValue = array(
                     ucwords(strtolower($_POST["first_name"])),
                     ucwords(strtolower($_POST["last_name"])),
-                    $_POST["blood_type"],
+                    strtoupper($_POST["blood_type"]),
                     strtolower($_POST["email"])
                 );
 
