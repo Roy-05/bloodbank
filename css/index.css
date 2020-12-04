@@ -7,14 +7,14 @@ body {
   }
 
 .jumbotron {
-    background-color: rgba(140, 81, 99, 0.8);
+    background-color: rgba(140, 81, 99, 0.92);
     border-radius: 10px;
   }
 
 
 .btn-rounded { 
   background-color: transparent;
-border: 2px solid black;
+border: 1px solid #f7f6f0;
 color: #F7F6F0;
 letter-spacing: 1px;
 transition: all 0.5s;
@@ -51,7 +51,7 @@ font-weight: bolder;
 @media (hover: hover) {
   .btn-rounded:hover {
     background-color: rgb(213, 83, 91);
-    border: 2px solid #D5535B;
+    border: 1px solid #D5535B;
     color: #fff;
     font-weight: bolder ;
     transition: 300ms;

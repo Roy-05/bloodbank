@@ -14,19 +14,31 @@ class Requests
         
     }
 
+    function getAvailableSamples() {
+        $query = "SELECT name, avb_blood_type, added_on, hos_id FROM AvailableBlood
+                    JOIN Hospitals
+                    USING(hos_id)
+                    ORDER BY added_on DESC";
+
+        return $this->ds->select($query);
+    }
+
     /**
      * @return bool
      */
     function isValidRequest($hos_id, $req_blood_type) 
     {   
         session_start();
-        $isValid = false;
+        $response = array(
+            "status" => "error",
+            "message" => "You have already requested this sample."
+        );
 
         // Verify that it is not a duplicate request
         $query = 'SELECT req_id FROM Requests
                     WHERE hos_id = ? AND rcvr_id=?';
         
-        $paramType = 'i';
+        $paramType = 'ii';
         $paramValue = array(
             $hos_id,
             $this->rcvr_id
@@ -35,7 +47,7 @@ class Requests
         $result = $this->ds->select($query, $paramType, $paramValue);  
        
         if($result) {
-            return $isValid;
+            return $response;
         }
 
         // Verify that the user has the same blood type to request sample
@@ -50,11 +62,13 @@ class Requests
         $rcvr_blood_type = $result[0]['rcvr_blood_type'];
 
         if($rcvr_blood_type !== $req_blood_type) {
-            return $isValid;
+            $response['message'] = "You do not have the matching blood type.";
+            return $response;
         }
 
-        $isValid = true;
-        return $isValid;
+        $response["status"] = "success";
+        $response["message"] = "Success! Your request has been sent to the hospital.";
+        return $response;
     }   
 
     function requestBloodSample($hos_id) {

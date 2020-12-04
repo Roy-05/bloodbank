@@ -184,4 +184,26 @@ class User
             }
         }
     }
+
+
+    /**
+     * Get the name of the currently logged in  user
+     */
+    public function getUserBloodType()
+    {
+        session_start();
+        if ($_SESSION['logged_in']) {
+            $query = "SELECT rcvr_blood_type FROM Receivers
+                        WHERE user_id = ?";
+            $paramType = "i";
+            $paramValue = array(
+                $_SESSION["user_id"]
+            );
+
+            $result = $this->ds->select($query, $paramType, $paramValue);
+            $blood_type = $result[0]['rcvr_blood_type'];
+
+            return $blood_type;
+        }
+    }
 }

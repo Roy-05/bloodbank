@@ -1,15 +1,11 @@
 <?php 
-   
-    require_once("./Model/BloodSamples.php");
     require_once("./Model/Requests.php");
-    $blood_samples = new BloodSamples();
     $requests = new Requests();
     session_start();
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        
+    <head>   
         <?php include("./components/head.php"); ?>
         <link rel="stylesheet" href="./css/viewSamples.css">
         <script src="./loader.js"></script>
@@ -20,76 +16,49 @@
         <?php
         include("./components/navbar.php");
         if (!$_SESSION['logged_in']) {
-            echo "<div>Login to request blood samples</div>";
+            echo "
+            <div>
+                <h5 class='my-4 w-100 text-center'>
+                <div>Login to request blood samples</div>
+            </div>";
         } else {
             include("./components/welcomeBanner.php");
         }
         ?>
         <div class="container w-75 d-flex justify-content-center">
             <?php 
-                $html = "
-                    <table class='table'>
-                        <tr>
-                            <th>Hospital Name</th>
-                            <th>Available Blood</th>
-                            <th>Added On</th>
-                        </tr>";
+                ob_start();
+                include_once("./avbSamplesTable.php");
+                if ($_GET['requestSample']){
+                    if(!$_SESSION['logged_in']){
+                        header("Location: login.php");
+                        exit();
+                    };
 
-                $avb_samples = $blood_samples->getAvailableSamples();
-                foreach ($avb_samples as $row) {
-                    $html .= "
-                        <tr>
-                            <td rowspan=2>$row[name]</td>
-                            <td  rowspan=2>$row[avb_blood_type]</td>
-                            <td >".date('d-m-Y',strtotime($row['added_on']))."</td>
-                        </tr>
-                        <tr>
-                            <td class=req_btn_cell>
-                                <a 
-                                id=requestSamplebtn 
-                                type=button 
-                                class='btn btn-rounded'";
+     
+                    if($_SESSION['user_type'] === 'H'){
+                        $response = "Please login as a Receiver to request blood.";
+                        $responseType = "danger";
 
-                    $html .= !$_SESSION['logged_in'] ? 
-                                "href=login.php>" : 
-                                "data-toggle=modal 
-                                data-target=#addBloodModal>";
-                                
-                    $html .=    "Request
-                                </a>
-                            </td>
-                        </tr>";
-                }
-                
-            //     <td class=req_btn_cell>
-            //     <a 
-            //         href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
-            //         <button class=req_sample_btn>Request</button>
-            //     </a>
-            // </td>
-            //     //     if ($_SESSION['logged_in'] && $_SESSION['user_type'] === "R") {
-                //         $html .= "
-                //             <td>
-                //                 <a href=viewSamples.php?hos_id=$row[hos_id]&req_blood_type=".urlencode($row['avb_blood_type']).">
-                //                     <button class=req_sample_btn>Request</button>
-                //                 </a>
-                //             </td>
-                //         </tr>";
-                //     } else {
-                //         $html .= "</tr>";
-                //     }
-                // }
-                $html .= "</table>";
+                    }
+                    else if($_SESSION['user_type'] === "R" && $_GET["hos_id"] && $_GET["req_blood_type"]){
+                        $isValid = $requests->isValidRequest($_GET["hos_id"], $_GET['req_blood_type']);
+                        $response = $isValid["message"];
 
-                echo $html;
+                        if($isValid["status"] === "success"){
+                            $requests->requestBloodSample($_GET["hos_id"]);
+                            $responseType = "success";
+                        }     
+                        else {
+                            $responseType = "danger";
+                        }
+                    }
+                   echo "
+                    <script>
+                       display_alert('user-banner', '$response', '$responseType');
+                    </script>";
+                } 
 
-                if($_SESSION['user_type'] === "R" && $_GET["hos_id"] && $_GET["req_blood_type"]) {
-                    $isValid = $requests->isValidRequest($_GET["hos_id"], $_GET['req_blood_type']);
-                    if($isValid){
-                        $requests->requestBloodSample($_GET["hos_id"]);
-
-                    }   
-                }
             ?>
         </div>
     </body>
