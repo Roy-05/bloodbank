@@ -41,14 +41,6 @@ html {
     font-size: 1.5rem;
     }
     
-    .form-signin .btn {
-    font-size: 14px;
-    border-radius: 5rem;
-    letter-spacing: .1rem;
-    font-weight: bold;
-    padding: 1rem;
-    transition: all 0.2s;
-    }
     
     .form-label-group {
     position: relative;
@@ -68,3 +60,25 @@ html {
       font-size: 14px;
     }
     
+  input.btn-rounded {
+
+    background-color: transparent;
+    border: 2px solid black;
+    color:   black;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+    font-size: 18px;
+    border-radius: 30px;
+    font-weight: bolder;
+  }
+
+  
+  @media (hover: hover) {
+    input.btn-rounded:hover {
+      background-color: rgb(213, 83, 91);
+      border: 2px solid #D5535B;
+      color: #fff;
+      font-weight: bolder ;
+      transition: 300ms;
+    }
+  }

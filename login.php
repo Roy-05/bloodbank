@@ -44,7 +44,9 @@
                                     <label for="loginPassword">Password:</label>
                                     <input type="password" name="password" id="loginPassword" class="form-control" placeholder="Password" required>
                                 </div>
-                                <input type="submit" name="login_btn" class="btn btn-lg btn-primary btn-block" value="SIGN IN" />
+                                <div class="row justify-content-center">
+                                    <input type="submit" name="login_btn" class="btn btn-rounded" value="SIGN IN" />
+                                </div>
                                 <div class="rows text-center mt-1">
                                     <div>
                                         Dont have an account yet? 

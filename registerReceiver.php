@@ -55,7 +55,9 @@
                                     <label for="regRcvrPassword">Password:</label>
                                     <input type="password" name="password" id="regRcvrPassword" class="form-control" placeholder="Password" required>
                                 </div>
-                                <input type="submit" name="register_btn"  class="btn btn-lg btn-primary btn-block" value="REGISTER" />
+                                <div class="row justify-content-center">
+                                    <input type="submit" name="register_btn"  class="btn btn-rounded" value="REGISTER" />
+                                </div>
                                 <div class="row justify-content-center mt-1">
                                     Already have an account?&nbsp;
                                     <a href="login.php">Login</a>
