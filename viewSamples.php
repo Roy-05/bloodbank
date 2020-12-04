@@ -17,9 +17,10 @@
         include("./components/navbar.php");
         if (!$_SESSION['logged_in']) {
             echo "
-            <div>
-                <h5 class='my-4 w-100 text-center'>
-                <div>Login to request blood samples</div>
+            <div class='my-4 w-100 text-center'>
+                <h5>
+                    <div>Login to request blood samples</div>
+                </h5>
             </div>";
         } else {
             include("./components/welcomeBanner.php");
@@ -58,7 +59,6 @@
                        display_alert('user-banner', '$response', '$responseType');
                     </script>";
                 } 
-
             ?>
         </div>
     </body>

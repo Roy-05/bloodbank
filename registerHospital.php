@@ -22,12 +22,13 @@ if (!empty($_POST["register_btn"])) {
     </head>
     <body>
         <?php include("./components/navbar.php") ?>
-        <div class="container mt-4">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin">
                         <div class="card-body p-4">
                             <h5 class="card-title text-center">Register - Hospital</h5>
+                            <hr />
                             <form class="form-signin w-100" action="" method="post" name="registration">
                                 <div class="form-label-group">
                                     <label for="regHosName">Hospital Name:</label>
@@ -37,13 +38,12 @@ if (!empty($_POST["register_btn"])) {
                                     <label for="regHosEmail">Official Email Address:</label>
                                     <input type="email" name="email" id="regHosEmail" class="form-control" placeholder="name@hospital_name.com" required>
                                 </div>
-                                <div class="form-label-group">
+                                <div class="form-label-group mb-4">
                                     <label for="regHosPassword">Password:</label>
                                     <input type="password" name="password" id="regHosPassword" class="form-control" placeholder="Password" required>
                                 </div>
                                 <input type="submit" name="register_btn"  class="btn btn-lg btn-primary btn-block" value="REGISTER" />
-                                <hr class="my-4">
-                                <div>
+                                <div class="row justify-content-center mt-1">
                                     Already have an account?    
                                     <a href="login.php">Login.</a>
                                 </div>

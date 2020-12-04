@@ -46,7 +46,7 @@ class User
         $isUserExists = $this->isUserExists($_POST["email"]);
         if ($isUserExists) {
             $response = array(
-                "status" => "error",
+                "status" => "danger",
                 "message" => "User already exists."
             );
         } else {
@@ -62,7 +62,7 @@ class User
                 $hashedPassword,
                 $user_type
             );
-            $insertId = $this->ds->insert($query, $paramType, $paramValue);
+            $isSuccessful = $this->ds->insert($query, $paramType, $paramValue);
 
 
             if ($user_type === 'H') {
@@ -74,7 +74,7 @@ class User
                     $_POST["email"]
                 );
 
-                $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
+                $isSuccessful_1 = $this->ds->insert($query, $paramType, $paramValue);
             } else {
                 $query =  "INSERT into Receivers(first_name, last_name, rcvr_blood_type, user_id)
                             VALUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
@@ -86,19 +86,19 @@ class User
                     $_POST["email"],
                 );
 
-                $insertId1 = $this->ds->insert($query, $paramType, $paramValue);
+                $isSuccessful_1 = $this->ds->insert($query, $paramType, $paramValue);
             }
 
-            if (!empty($insertId) && !empty($insertId1)) {
-                // $response = array(
-                //     "status" => "success",
-                //     "message" => "You have registered successfully."
-                // );
+            if ($isSuccessful && $isSuccessful_1) {
+                $response = array(
+                    "status" => "success",
+                    "message" => "You have registered successfully."
+                );
 
-                header("Location: login.php");
+                
             }
         }
-        //return $response;
+        return $response;
     }
 
     public function getMember($email)
@@ -145,8 +145,12 @@ class User
             header("Location: $url");
             exit();
         } else if ($loginPassword == 0) {
-            $loginStatus = "Invalid username or password.";
-            return $loginStatus;
+            $response = array(
+                "status" => "danger",
+                "message" => "Invalid Username or password"
+            );            
+
+            return $response;
         }
     }
 

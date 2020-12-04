@@ -73,10 +73,9 @@ class DataSource
         $stmt = mysqli_prepare($this->conn, $query);
         $this->bindQueryParams($stmt, $paramType, $paramArray);
 
-        mysqli_stmt_execute($stmt);
+        $success = mysqli_stmt_execute($stmt);
 
-        $insertId = mysqli_insert_id($stmt);
-        return $insertId;
+        return $success;
     }
 
     /**
