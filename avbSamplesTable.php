@@ -32,5 +32,3 @@
     $html .= "</table>";
 
     echo $html;
-
-?>

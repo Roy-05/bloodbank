@@ -5,7 +5,7 @@ html {
   width: 100vw;
   font-family: "Ubuntu", sans-serif;
   overflow-x: hidden;
-  background-color: #F5F4F3;
+  background-color: #f5f4f3;
 }
 
 .nav-link,
@@ -19,9 +19,8 @@ html {
   -webkit-box-shadow: 0 5px 6px -6px #999;
   -moz-box-shadow: 0 5px 6px -6px #999;
   box-shadow: 0 5px 6px -6px #999;
-  border-radius:  10px;
+  border-radius: 10px;
 }
-
 
 @media screen and (max-width: 768px) {
   h1 {
@@ -30,55 +29,52 @@ html {
 }
 
 .card-signin {
-    border: 0;
-    border-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-    }
-    
-    .card-signin .card-title {
-    font-weight: 300;
-    font-size: 1.5rem;
-    }
-    
-    
-    .form-label-group {
-    position: relative;
-    margin-bottom: 0.5rem;
-    }
-    
-    .form-label-group label {
-      margin-bottom: 0.1rem;
-    };
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
 
-    .form-label-group input {
-    height: auto;
-    border-radius: 2rem;
-    }
+.card-signin .card-title {
+  font-weight: 300;
+  font-size: 1.5rem;
+}
 
-    .form-control {
-      font-size: 14px;
-      border-radius: 0.5rem !important;
-    }
-    
-  input.btn-rounded {
+.form-label-group {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
 
-    background-color: transparent;
-    border: 2px solid black;
-    color:   black;
-    letter-spacing: 1px;
-    transition: all 0.5s;
-    font-size: 18px;
-    border-radius: 30px;
+.form-label-group label {
+  margin-bottom: 0.1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-control {
+  font-size: 14px;
+  border-radius: 0.5rem !important;
+}
+
+input.btn-rounded {
+  background-color: transparent;
+  border: 2px solid black;
+  color: black;
+  letter-spacing: 1px;
+  transition: all 0.5s;
+  font-size: 18px;
+  border-radius: 30px;
+  font-weight: bolder;
+}
+
+@media (hover: hover) {
+  input.btn-rounded:hover {
+    background-color: rgb(213, 83, 91);
+    border: 2px solid #d5535b;
+    color: #fff;
     font-weight: bolder;
+    transition: 300ms;
   }
-
-  
-  @media (hover: hover) {
-    input.btn-rounded:hover {
-      background-color: rgb(213, 83, 91);
-      border: 2px solid #D5535B;
-      color: #fff;
-      font-weight: bolder ;
-      transition: 300ms;
-    }
-  }
+}

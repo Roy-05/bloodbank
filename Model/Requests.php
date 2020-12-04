@@ -10,11 +10,10 @@ class Requests
         require_once("./DataSource/db.php");
         $this->ds = new DataSource();
         $this->setRcvrId();
-
-        
     }
 
-    function getAvailableSamples() {
+    function getAvailableSamples()
+    {
         $query = "SELECT name, avb_blood_type, added_on, hos_id FROM AvailableBlood
                     JOIN Hospitals
                     USING(hos_id)
@@ -27,8 +26,8 @@ class Requests
      * Check if the request is a valid one
      * @return bool
      */
-    function isValidRequest($hos_id, $req_blood_type) 
-    {   
+    function isValidRequest($hos_id, $req_blood_type)
+    {
         session_start();
         $response = array(
             "status" => "error",
@@ -38,16 +37,16 @@ class Requests
         // Verify that it is not a duplicate request
         $query = 'SELECT req_id FROM Requests
                     WHERE hos_id = ? AND rcvr_id=?';
-        
+
         $paramType = 'ii';
         $paramValue = array(
             $hos_id,
             $this->rcvr_id
-        );  
+        );
 
-        $result = $this->ds->select($query, $paramType, $paramValue);  
-       
-        if($result) {
+        $result = $this->ds->select($query, $paramType, $paramValue);
+
+        if ($result) {
             return $response;
         }
 
@@ -56,13 +55,13 @@ class Requests
                     WHERE rcvr_id = ?';
         $paramType = 'i';
         $paramValue = array(
-           $this->rcvr_id
+            $this->rcvr_id
         );
 
-        $result = $this->ds->select($query, $paramType, $paramValue);  
+        $result = $this->ds->select($query, $paramType, $paramValue);
         $rcvr_blood_type = $result[0]['rcvr_blood_type'];
 
-        if($rcvr_blood_type !== $req_blood_type) {
+        if ($rcvr_blood_type !== $req_blood_type) {
             $response['message'] = "You do not have the matching blood type.";
             return $response;
         }
@@ -70,10 +69,11 @@ class Requests
         $response["status"] = "success";
         $response["message"] = "Success! Your request has been sent to the hospital.";
         return $response;
-    }   
+    }
 
-    
-    function requestBloodSample($hos_id) {
+
+    function requestBloodSample($hos_id)
+    {
         $query = "INSERT INTO Requests(rcvr_id, hos_id, req_date)
                     VALUES (?, ?, CURDATE())";
         $paramType = 'ii';
@@ -83,18 +83,19 @@ class Requests
         );
 
         $this->ds->insert($query, $paramType, $paramValue);
-       }
-    
+    }
 
-    function setRcvrId() {
+
+    function setRcvrId()
+    {
         session_start();
-        if($_SESSION['logged_in']){
+        if ($_SESSION['logged_in']) {
             $query = 'SELECT rcvr_id FROM Receivers
                     WHERE user_id = ?';
             $paramType = 'i';
             $paramValue = array($_SESSION['user_id']);
 
-            $result = $this->ds->select($query, $paramType, $paramValue);  
+            $result = $this->ds->select($query, $paramType, $paramValue);
             $this->rcvr_id = $result[0]['rcvr_id'];
         }
     }

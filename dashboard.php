@@ -13,55 +13,58 @@ $dashboard = new Dashboard();
 
 if (isset($_POST['blood_type'])) {
     $response = $dashboard->isValidSample($_POST['blood_type']);
-   
-    if($response["status"] === "success"){
+
+    if ($response["status"] === "success") {
         $dashboard->addBloodSample();
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <?php include("./components/head.php"); ?>
-        <link rel="stylesheet" href="./css/dashboard.css">
-        <title>Dashboard </title>
-    </head>
-    <body>
-        <div id="loader" class="center"></div>  
-        <?php include("./components/navbar.php"); ?>
-        <?php include("./components/welcomeBanner.php"); ?>
-        <div class="container w-75">
-            <nav>
-                <div class="nav nav-tabs row">
-                    <a class="nav-item nav-link active col-6 text-center py-3" data-toggle="tab" href="#menu1">
-                        View Requests
-                    </a>
-                    <a class="nav-item nav-link col-6 text-center py-3" data-toggle="tab" href="#menu2">
-                        View Available Samples
-                    </a>
-                </div>
-            </nav>
-            <div class="tab-content d-flex justify-content-center my-4">
-                <div id="menu1" class="tab-pane fade show active">
-                    <?php include_once("./components/dashboard_helpers/requestsTable.php") ?>
-                </div>
-                <div id="menu2" class="tab-pane fade">
-                    <!-- Trigger modal on button click-->
-                    <div class="row justify-content-center">
-                        <button id="addNewBlood" type="button" class="btn btn-rounded mb-4" data-toggle="modal" data-target="#addBloodModal">
+
+<head>
+    <?php include("./components/head.php"); ?>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <title>Dashboard </title>
+</head>
+
+<body>
+    <div id="loader" class="center"></div>
+    <?php include("./components/navbar.php"); ?>
+    <?php include("./components/welcomeBanner.php"); ?>
+    <div class="container w-75">
+        <nav>
+            <div class="nav nav-tabs row">
+                <a class="nav-item nav-link active col-6 text-center py-3" data-toggle="tab" href="#menu1">
+                    View Requests
+                </a>
+                <a class="nav-item nav-link col-6 text-center py-3" data-toggle="tab" href="#menu2">
+                    View Available Samples
+                </a>
+            </div>
+        </nav>
+        <div class="tab-content d-flex justify-content-center my-4">
+            <div id="menu1" class="tab-pane fade show active">
+                <?php include_once("./components/dashboard_helpers/requestsTable.php") ?>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <!-- Trigger modal on button click-->
+                <div class="row justify-content-center">
+                    <button id="addNewBlood" type="button" class="btn btn-rounded mb-4" data-toggle="modal" data-target="#addBloodModal">
                         Add New Sample
-                        </button>
-                    </div>
-                    <?php 
-                        include_once("./components/dashboard_helpers/addSamplesModal.php");
-                        include_once("./components/dashboard_helpers/hosSamplesTable.php");
-                        echo "
+                    </button>
+                </div>
+                <?php
+                include_once("./components/dashboard_helpers/addSamplesModal.php");
+                include_once("./components/dashboard_helpers/hosSamplesTable.php");
+                echo "
                         <script>
                             display_alert('user-banner', '$response[message]', '$response[status]');
                         </script>";
-                    ?>
-                </div>
+                ?>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

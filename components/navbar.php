@@ -14,7 +14,7 @@
       </li>
       <?php
       session_start();
-      if($_SESSION['logged_in'] && $_SESSION['user_type'] == "H"){
+      if ($_SESSION['logged_in'] && $_SESSION['user_type'] == "H") {
         echo '
         <li class="nav-item">
           <a

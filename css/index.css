@@ -1,61 +1,64 @@
 html,
 body {
-    color: #F4F7F2;
-    background-color: #F99198;
-    background-image: linear-gradient(45deg, #F99198 50%, #F5F4F3 calc(50% + 1px));
-    min-height: 500px;
-  }
-
-.jumbotron {
-    background-color: rgba(152, 71, 87, 0.96);
-    border-radius: 10px;
-  }
-
-.btn-rounded { 
-  background-color: transparent;
-border: 2px solid #F4F7F2;
-color: #F4F7F2;
-letter-spacing: 1.2px;
-font-size: 20px;
-border-radius: 30px;
-font-weight: bolder;
+  color: #f4f7f2;
+  background-color: #f99198;
+  background-image: linear-gradient(
+    45deg,
+    #f99198 50%,
+    #f5f4f3 calc(50% + 1px)
+  );
+  min-height: 500px;
 }
 
-#loader { 
-  border: 12px solid #f3f3f3; 
-  border-radius: 50%; 
-  border-top: 12px solid #444444; 
-  width: 70px; 
-  height: 70px; 
-  animation: spin 1s linear infinite; 
-} 
+.jumbotron {
+  background-color: rgba(152, 71, 87, 0.96);
+  border-radius: 10px;
+}
 
-@keyframes spin { 
-  100% { 
-      transform: rotate(360deg); 
-  } 
-} 
+.btn-rounded {
+  background-color: transparent;
+  border: 2px solid #f4f7f2;
+  color: #f4f7f2;
+  letter-spacing: 1.2px;
+  font-size: 20px;
+  border-radius: 30px;
+  font-weight: bolder;
+}
 
-.center { 
-  position: absolute; 
-  top: 0; 
-  bottom: 0; 
-  left: 0; 
-  right: 0; 
-  margin: auto; 
-} 
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #444444;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
 
-  
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 @media (hover: hover) {
   .btn-rounded:hover {
     background-color: rgb(213, 83, 91);
     border: 2px solid black;
     color: #fff;
-    font-weight: bolder ;
+    font-weight: bolder;
     transition: 300ms;
   }
 
   .nav-link {
-      color: #000;
+    color: #000;
   }
 }

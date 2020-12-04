@@ -36,7 +36,8 @@ class User
         return $result;
     }
 
-    public function isValidBloodType($blood_type){
+    public function isValidBloodType($blood_type)
+    {
         $response = array(
             "status" => "danger",
             "message" => "Please enter a valid blood type"
@@ -49,11 +50,10 @@ class User
         );
 
         // Check if the blood type is a valid string
-        if(!in_array($blood_type, $valid_blood_types)){
-            
+        if (!in_array($blood_type, $valid_blood_types)) {
+
             return $response;
-        }
-        else {
+        } else {
             $response["status"] = "success";
             $response["message"] = "";
 
@@ -82,7 +82,7 @@ class User
 
                 $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
             }
-            
+
             $query = 'INSERT INTO Logins (email, password, user_type) VALUES (?, ?, ?)';
             $paramType = 'sss';
             $paramValue = array(
@@ -104,10 +104,10 @@ class User
 
                 $isSuccessful_1 = $this->ds->insert($query, $paramType, $paramValue);
             } else {
-                
+
                 // Validate if user input is of a correct blood type
                 $response = $this->isValidBloodType($_POST["blood_type"]);
-                if($response["status"] === "danger"){
+                if ($response["status"] === "danger") {
                     return $response;
                 }
 
@@ -129,8 +129,6 @@ class User
                     "status" => "success",
                     "message" => "You have registered successfully."
                 );
-
-                
             }
         }
         return $response;
@@ -183,7 +181,7 @@ class User
             $response = array(
                 "status" => "danger",
                 "message" => "Invalid Username or password"
-            );            
+            );
 
             return $response;
         }
@@ -218,7 +216,7 @@ class User
 
                 $result = $this->ds->select($query, $paramType, $paramValue);
                 $name = $result[0]['name'];
-                
+
                 return $name;
             }
         }
