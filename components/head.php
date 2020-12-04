@@ -9,10 +9,10 @@
 <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" />
-<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="/bloodbank/css/main.css">
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" defer></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" defer></script>
-<script src= "./loader.js"></script>
+<script src= "/bloodbank/main.js"></script>
 <!-- End Scripts-->

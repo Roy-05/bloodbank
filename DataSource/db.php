@@ -4,10 +4,10 @@
 -->
 <?php
 
-define('DB_HOST', 'us-cdbr-east-02.cleardb.com');
-define('DB_USERNAME', 'bd98827ef4de10');
-define('DB_PASSWORD', 'ad22bb5c');
-define('DB_NAME', 'heroku_8e71844f67bd85c');
+define('DB_HOST', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '$t3isTemp');
+define('DB_NAME', 'bloodbank');
 class DataSource
 {
 
