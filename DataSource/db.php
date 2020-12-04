@@ -4,10 +4,10 @@
 -->
 <?php
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '$t3isTemp');
-define('DB_NAME', 'bloodbank');
+define('DB_HOST', 'us-cdbr-east-02.cleardb.com');
+define('DB_USERNAME', 'bd98827ef4de10');
+define('DB_PASSWORD', 'ad22bb5c');
+define('DB_NAME', 'heroku_8e71844f67bd85c');
 class DataSource
 {
 
@@ -21,7 +21,7 @@ class DataSource
 
     public function getConnection()
     {
-        $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+        $conn = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
         if (mysqli_connect_errno()) {
             trigger_error("Cannot connect to the Database now.");
