@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <div class="form-label-group">
                         <label for="hosNewBlood">Enter the Blood Type:</label>
-                        <input type="text" name="blood_type" id="hosNewBlood" placeholder="A+, O+, AB-, etc..." required />
+                        <input type="text" class="form-control" name="blood_type" id="hosNewBlood" placeholder="A+, O+, AB-, etc..." required />
                     </div>
                 </div>
                 <div class="modal-footer">

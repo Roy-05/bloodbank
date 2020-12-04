@@ -17,9 +17,6 @@ if (isset($_POST['blood_type'])) {
     if($response["status"] === "success"){
         $dashboard->addBloodSample();
     }
-    else {
-        //echo $response["message"];
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -55,8 +52,14 @@ if (isset($_POST['blood_type'])) {
                         Add New Sample
                         </button>
                     </div>
-                    <?php include_once("./addBloodModal.php") ?>
-                    <?php include_once("./viewAvbBloodTable.php") ?>
+                    <?php 
+                        include_once("./addBloodModal.php");
+                        include_once("./viewAvbBloodTable.php");
+                        echo "
+                        <script>
+                            display_alert('user-banner', '$response[message]', '$response[status]');
+                        </script>";
+                    ?>
                 </div>
             </div>
         </div>

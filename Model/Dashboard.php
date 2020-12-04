@@ -31,8 +31,8 @@ class Dashboard {
         // Check if the blood type is a valid string
         if(!in_array($blood_type, $valid_blood_types)){
             $response = array(
-                "status" => "error",
-                "message" => "Entered value is not a valid blood type"
+                "status" => "danger",
+                "message" => "Please enter a valid blood type"
             );
 
             return $response;
@@ -52,8 +52,8 @@ class Dashboard {
         $result = $this->ds->select($query, $paramType, $paramValue);
         if($result) {
             $response = array(
-                "status" => "error",
-                "message" => "Blood Type already in the database."
+                "status" => "danger",
+                "message" => "Blood Type is already in the database."
             );
 
             return $response;
@@ -61,7 +61,7 @@ class Dashboard {
 
         $response = array(
             "status" => "success",
-            "message" => "Blood Type can be added to the database."
+            "message" => "Success! Blood Type has been added to the database."
         );
 
         return $response;
