@@ -4,10 +4,10 @@
 -->
 <?php
 
-define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '$t3isTemp');
-define('DB_NAME', 'bloodbank');
+define('DB_HOST', '');
+define('DB_USERNAME', '');
+define('DB_PASSWORD', '');
+define('DB_NAME', '');
 class DataSource
 {
 
