@@ -1,7 +1,7 @@
 <!-- Navbar Component -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="index.php">
-    <img src="/bloodbank/assets/blood-donation.svg" width="30px" height="30px">
+    <img src="./assets/blood-donation.svg" width="30px" height="30px">
     &nbsp;Saket's Bloodbank
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
