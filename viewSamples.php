@@ -7,7 +7,7 @@
 <html>
     <head>   
         <?php include("./components/head.php"); ?>
-        <link rel="stylesheet" href="/bloodbank/css/viewSamples.css">
+        <link rel="stylesheet" href="./css/viewSamples.css">
         <title>View Samples</title>
     </head>
     <body>

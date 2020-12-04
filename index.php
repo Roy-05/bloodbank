@@ -2,7 +2,7 @@
 <html lang="en">
     <head>  
         <?php include("./components/head.php") ?>
-        <link rel="stylesheet" href="/bloodbank/css/index.css">
+        <link rel="stylesheet" href="./css/index.css">
         <title>Saket's Bloodbank</title>
     </head>
     <body>
