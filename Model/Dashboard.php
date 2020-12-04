@@ -10,7 +10,7 @@ class Dashboard {
         $this->ds = new DataSource;
         $this->setHospitalId();
     }
-
+    
     public function setHospitalId() {
         session_start();
         $user_id = $_SESSION['user_id'];

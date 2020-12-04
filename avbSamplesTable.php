@@ -1,5 +1,4 @@
 <?php 
-    require_once("./Model/Requests.php");
     $requests = new Requests();
     $avb_samples = $requests->getAvailableSamples();
 

@@ -24,6 +24,7 @@ class Requests
     }
 
     /**
+     * Check if the request is a valid one
      * @return bool
      */
     function isValidRequest($hos_id, $req_blood_type) 
@@ -71,6 +72,7 @@ class Requests
         return $response;
     }   
 
+    
     function requestBloodSample($hos_id) {
         $query = "INSERT INTO Requests(rcvr_id, hos_id, req_date)
                     VALUES (?, ?, CURDATE())";
@@ -80,7 +82,7 @@ class Requests
             $hos_id
         );
 
-        $result = $this->ds->insert($query, $paramType, $paramValue);
+        $this->ds->insert($query, $paramType, $paramValue);
        }
     
 

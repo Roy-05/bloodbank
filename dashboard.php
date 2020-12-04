@@ -43,7 +43,7 @@ if (isset($_POST['blood_type'])) {
             </nav>
             <div class="tab-content d-flex justify-content-center my-4">
                 <div id="menu1" class="tab-pane fade show active">
-                    <?php include_once("./viewRequestsTable.php") ?>
+                    <?php include_once("./components/dashboard_helpers/requestsTable.php") ?>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <!-- Trigger modal on button click-->
@@ -53,8 +53,8 @@ if (isset($_POST['blood_type'])) {
                         </button>
                     </div>
                     <?php 
-                        include_once("./addBloodModal.php");
-                        include_once("./viewAvbBloodTable.php");
+                        include_once("./components/dashboard_helpers/addSamplesModal.php");
+                        include_once("./components/dashboard_helpers/hosSamplesTable.php");
                         echo "
                         <script>
                             display_alert('user-banner', '$response[message]', '$response[status]');

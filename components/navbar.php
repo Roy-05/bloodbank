@@ -1,14 +1,17 @@
 <!-- Navbar Component -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="index.php">
-    <img src="./assets/blood-donation.svg" width="35px" height="35px">
-    &nbsp;Saket's BloodBank
+    <img src="/bloodbank/assets/blood-donation.svg" width="30px" height="30px">
+    &nbsp;Saket's Bloodbank
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"> </span>
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link " href="index.php">Home</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link " href="viewSamples.php">View Samples</a>
       </li>
