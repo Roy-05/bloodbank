@@ -7,12 +7,17 @@
         header("Location: $url");
         exit();
     }
+
+    if (!empty($_POST["register_btn"])) {
+        require_once('./Model/User.php');
+        $member = new User();
+        $response = $member->registerMember('R');
+    }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php include("./components/head.php") ?>
-        <script src= "./loader.js"></script>
         <title>Sign Up - Receiver</title>
     </head>
     <body>
@@ -23,9 +28,9 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin">
                         <div class="card-body p-4">
-                            <div id="rcvr-reg-head">
+                            <div>
                                 <h5 class="card-title text-center">Register - Receiver</h5>
-                                <hr />
+                                <div id="reg-rcvr-head"></div>
                             </div>
                             <form class="form-signin w-100" action="" method="post" name="registration">
                                 <div class="row">    
@@ -52,10 +57,16 @@
                                 </div>
                                 <input type="submit" name="register_btn"  class="btn btn-lg btn-primary btn-block" value="REGISTER" />
                                 <div class="row justify-content-center mt-1">
-                                    Already have an account?    
+                                    Already have an account?&nbsp;
                                     <a href="login.php">Login</a>
                                 </div>
                             </form>
+                            <?php 
+                                echo "
+                                <script>
+                                    display_alert('reg-rcvr-head', '$response[message]', '$response[status]');
+                                </script>";
+                             ?>
                         </div>
                     </div>
                 </div>
@@ -63,15 +74,3 @@
         </div>
     </body>
 </html>
-<?php 
-
-    if (!empty($_POST["register_btn"])) {
-        require_once('./Model/User.php');
-        $member = new User();
-        $response = $member->registerMember('R');
-        echo "
-            <script>
-                display_alert('reg-rcvr-head', '$response[message]', '$response[status]');
-            </script>";
-    }
-?>

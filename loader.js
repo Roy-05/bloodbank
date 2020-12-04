@@ -20,8 +20,7 @@ document.onreadystatechange = function() {
  * @param {String} alert_type The type of alert to show [success/ error]
  */
 function display_alert(id, message, alert_type){
-    let elem = document.getElementById('login-head');
-    console.log(elem);
+    let elem = document.getElementById(id);
     let alert = document.createElement('div');
 
     alert.classList.add("alert", `alert-${alert_type}`);

@@ -36,6 +36,31 @@ class User
         return $result;
     }
 
+    public function isValidBloodType($blood_type){
+        $response = array(
+            "status" => "danger",
+            "message" => "Please enter a valid blood type"
+        );
+
+
+        $blood_type = strtoupper($blood_type);
+        $valid_blood_types = array(
+            "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"
+        );
+
+        // Check if the blood type is a valid string
+        if(!in_array($blood_type, $valid_blood_types)){
+            
+            return $response;
+        }
+        else {
+            $response["status"] = "success";
+            $response["message"] = "";
+
+            return $response;
+        }
+    }
+
     /**
      * to signup / register a user
      *
@@ -49,6 +74,8 @@ class User
                 "status" => "danger",
                 "message" => "User already exists."
             );
+
+            return $response;
         } else {
 
             if (!empty($_POST["password"])) {
@@ -76,6 +103,13 @@ class User
 
                 $isSuccessful_1 = $this->ds->insert($query, $paramType, $paramValue);
             } else {
+                
+                // Validate if user input is of a correct blood type
+                $response = $this->isValidBloodType($_POST["blood_type"]);
+                if($response["status"] === "danger"){
+                    return $response;
+                }
+
                 $query =  "INSERT into Receivers(first_name, last_name, rcvr_blood_type, user_id)
                             VALUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
                 $paramType = 'ssss';

@@ -31,9 +31,9 @@
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin ">
                         <div class="card-body p-4">
-                            <div id="login-head">
+                            <div>
                                 <h5 class="card-title text-center">Sign In</h5>
-                                <hr />
+                                <div id="login-head"></div> 
                             </div>
                             <form class="form-signin w-100" action="" method="post" name="login">
                                 <div class="form-label-group">
@@ -45,21 +45,22 @@
                                     <input type="password" name="password" id="loginPassword" class="form-control" placeholder="Password" required>
                                 </div>
                                 <input type="submit" name="login_btn" class="btn btn-lg btn-primary btn-block" value="SIGN IN" />
-                                <div>
-                                    Dont have an account yet? 
-                                </div>
-                                <div>
-                                    Register (
-                                    <a href="registerHospital.php">Hospital</a>
-                                    /
-                                    <a href="registerReceiver.php">Receiver</a>
-                                    )
+                                <div class="rows text-center mt-1">
+                                    <div>
+                                        Dont have an account yet? 
+                                    </div>
+                                    <div>
+                                        Register (
+                                        <a href="registerHospital.php">Hospital</a>
+                                        /
+                                        <a href="registerReceiver.php">Receiver</a>
+                                        )
+                                    </div>
                                 </div>
                             </form>
                             <?php 
                                 echo "
                                 <script>
-                                
                                     display_alert('login-head', '$response[message]', '$response[status]');
                                 </script>";
                             ?>
