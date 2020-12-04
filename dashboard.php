@@ -30,6 +30,7 @@ if (isset($_POST['blood_type'])) {
         <title>Dashboard </title>
     </head>
     <body>
+        <div id="loader" class="center"></div>  
         <?php include("./components/navbar.php"); ?>
         <?php include("./components/welcomeBanner.php"); ?>
         <div class="container w-75">

@@ -8,7 +8,7 @@
     <body>
         <div id="loader" class="center"></div> 
         <?php include("./components/navbar.php") ?>
-        <div class="h-75 d-flex justify-content-center align-items-center text-center">
+        <div class="mt-4 h-75 d-flex justify-content-center align-items-center text-center">
             <div class="jumbotron  w-50">
                 <h1 class="display-4 ">
                     Welcome to Saket's Bloodbank

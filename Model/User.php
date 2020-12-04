@@ -85,7 +85,7 @@ class User
             $query = 'INSERT INTO Logins (email, password, user_type) VALUES (?, ?, ?)';
             $paramType = 'sss';
             $paramValue = array(
-                $_POST["email"],
+                strtolower($_POST["email"]),
                 $hashedPassword,
                 $user_type
             );
@@ -97,8 +97,8 @@ class User
                             VAlUES (?, (SELECT user_id from `Logins` WHERE email=?))";
                 $paramType = 'ss';
                 $paramValue = array(
-                    $_POST["hos_name"],
-                    $_POST["email"]
+                    ucwords(strtolower($_POST["hos_name"])),
+                    strtolower($_POST["email"])
                 );
 
                 $isSuccessful_1 = $this->ds->insert($query, $paramType, $paramValue);
@@ -114,10 +114,10 @@ class User
                             VALUES (?, ?, ?, (SELECT user_id from `Logins` WHERE email=?))";
                 $paramType = 'ssss';
                 $paramValue = array(
-                    $_POST["first_name"],
-                    $_POST["last_name"],
+                    ucwords(strtolower($_POST["first_name"])),
+                    ucwords(strtolower($_POST["last_name"])),
                     $_POST["blood_type"],
-                    $_POST["email"],
+                    strtolower($_POST["email"])
                 );
 
                 $isSuccessful_1 = $this->ds->insert($query, $paramType, $paramValue);
